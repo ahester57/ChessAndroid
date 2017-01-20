@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public abstract class Entity {
 
     int xLoc, yLoc;
-    private String name;
     private char symbol;
 
     private int team;
@@ -23,12 +22,10 @@ public abstract class Entity {
 
 
     Entity() {
-        name = "";
         symbol = 'e';
     }
 
-    Entity(String n, char s) {
-        name = n;
+    Entity(char s) {
         symbol = s;
 
     }
@@ -77,6 +74,7 @@ public abstract class Entity {
 
     }
 
+    //@TODO Generalize this
     //Default movement, any direction, for multiple squares
     public void move(int dir, int distance) {
 

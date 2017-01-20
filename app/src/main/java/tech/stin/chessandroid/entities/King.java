@@ -10,12 +10,12 @@ package tech.stin.chessandroid.entities;
 public class King extends Entity {
 
     public King(){
-        super("King", 'k');
+        super('k');
 
     }
 
     public King(int dim[], int t){
-        super("King", 'k');
+        super('k');
 
         setTeam(t);
 
@@ -32,7 +32,7 @@ public class King extends Entity {
     }
 
     public King(int x, int y, int t){
-        super("King", 'k');
+        super('k');
 
         setTeam(t);
 

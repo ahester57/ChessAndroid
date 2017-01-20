@@ -8,7 +8,7 @@ package tech.stin.chessandroid.entities;
 public class OpenSpace extends Entity {
 
     public OpenSpace(char s){
-        super("Open Space", s);
+        super(s);
     }
 
 }

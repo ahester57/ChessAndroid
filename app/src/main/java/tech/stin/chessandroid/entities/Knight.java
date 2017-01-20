@@ -9,7 +9,7 @@ public class Knight extends Entity{
     private static int numKnights = 0;
 
     public Knight(int dim[], int t){
-        super("Knight", 'n');
+        super('n');
 
 
         setTeam(t);

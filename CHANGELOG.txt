@@ -1,0 +1,16 @@
+Austin Hester - UMSL CS
+01/19/17
+--------
+- set up for range extension
+- strings to strings.xml
+- fixed auto reset on king's death
+- change use of 'isOver' to allow continuation when over = true,
+		but only when ondOnKing = false
+- fixed up endOnKing switch to toggle next & auto buttons depending on over
+- cleaned up code a bit
+
+@TODO
+	- extend range
+	- scan for 'dangerous' squares
+	- FUTURE: don't move to 'dangerous' spot unless reward > risk
+		  if multiple 'underAttack', save most important

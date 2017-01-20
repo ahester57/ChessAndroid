@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private Button nextTurn;
     private ToggleButton autoAdvance;
     private Timer timer;
-    private ToggleButton mood;
-    private Switch endOnKingSwitch;
     private Spinner colorPicker;
 
     private boolean aggressive;
@@ -75,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
 
             gameboard = (GridLayout) findViewById(R.id.gameboard);
             nextTurn = (Button) findViewById(R.id.nextTurn);
-            mood = (ToggleButton) findViewById(R.id.mood);
+            ToggleButton mood = (ToggleButton) findViewById(R.id.mood);
             autoAdvance = (ToggleButton) findViewById(R.id.AutoPlayButton);
             Button reset = (Button) findViewById(R.id.resetGame);
-            endOnKingSwitch = (Switch) findViewById(R.id.endOnKing);
+            Switch endOnKingSwitch = (Switch) findViewById(R.id.endOnKing);
 
 
             aggressive = false;
@@ -93,15 +91,12 @@ public class MainActivity extends AppCompatActivity {
             nextTurn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    world.run();
+                    updateGameboard();
                     if(world.isOver()) {
-                        reset();
-                    }else {
-                        world.run();
-                        updateGameboard();
-                        if(world.isOver())
-                            reset();
+                        nextTurn.setEnabled(false);
+                        autoAdvance.setEnabled(false);
                     }
-
                 }
             });
 
@@ -152,6 +147,13 @@ public class MainActivity extends AppCompatActivity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     endOnKing = isChecked;
                     world.setEndOnKing(endOnKing);
+                    if (!endOnKing){
+                        nextTurn.setEnabled(true);
+                        autoAdvance.setEnabled(true);
+                    } else if(world.isOver()){
+                        nextTurn.setEnabled(false);
+                        autoAdvance.setEnabled(false);
+                    }
                 }
             });
             endOnKingSwitch.setChecked(true);
@@ -192,11 +194,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void reset(){
         autoPlay = false;
+        autoAdvance.setEnabled(true);
         autoAdvance.setChecked(false);
-        mood.setChecked(false);
+        //mood.setChecked(false);
         nextTurn.setEnabled(true);
         world = new World(NUM_ROWS, NUM_COLS);
-        endOnKingSwitch.setChecked(true);
+        //endOnKingSwitch.setChecked(true);
         initWorld();
         updateGameboard();
         world.setOptions(aggressive, endOnKing);

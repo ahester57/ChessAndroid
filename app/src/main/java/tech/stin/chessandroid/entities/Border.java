@@ -8,6 +8,6 @@ package tech.stin.chessandroid.entities;
 public class Border extends Entity {
 
     public Border(char s){
-        super("Border", s);
+        super(s);
     }
 }

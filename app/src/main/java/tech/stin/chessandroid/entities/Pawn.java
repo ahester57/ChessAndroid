@@ -15,7 +15,7 @@ public class Pawn extends Entity{
 
 
     public Pawn(int dim[], int t){
-        super("Pawn", 'p');
+        super('p');
 
         isQueen = false;
 
@@ -82,7 +82,7 @@ public class Pawn extends Entity{
     }
 
 
-    //they attack backwards!~
+    //they attack backwards!~ no they dont
     public boolean canAttack(ArrayList<Entity> grid){
         if(!isQueen) {
             boolean flag = false;

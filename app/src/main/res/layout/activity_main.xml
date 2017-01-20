@@ -14,7 +14,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next Move"
+        android:text="@string/nextMove"
         android:id="@+id/nextTurn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -37,11 +37,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView1"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_column="0"
             android:layout_row="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +50,7 @@
             android:id="@+id/textView2"
             android:layout_row="0"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,7 +60,7 @@
             android:id="@+id/textView3"
             android:layout_row="0"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +70,7 @@
             android:id="@+id/textView4"
             android:layout_row="0"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,7 +80,7 @@
             android:id="@+id/textView5"
             android:layout_row="0"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -91,7 +90,7 @@
             android:id="@+id/textView6"
             android:layout_row="0"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,7 +100,7 @@
             android:id="@+id/textView7"
             android:layout_row="0"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,7 +110,7 @@
             android:id="@+id/textView8"
             android:layout_row="0"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,7 +120,7 @@
             android:id="@+id/textView9"
             android:layout_row="0"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,7 +130,7 @@
             android:id="@+id/textView10"
             android:layout_row="0"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -139,12 +138,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView11"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_row="1"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -154,7 +151,7 @@
             android:id="@+id/textView12"
             android:layout_row="1"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -164,7 +161,7 @@
             android:id="@+id/textView13"
             android:layout_row="1"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -174,7 +171,7 @@
             android:id="@+id/textView14"
             android:layout_row="1"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -184,7 +181,7 @@
             android:id="@+id/textView15"
             android:layout_row="1"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -194,7 +191,7 @@
             android:id="@+id/textView16"
             android:layout_row="1"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -204,7 +201,7 @@
             android:id="@+id/textView17"
             android:layout_row="1"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -214,7 +211,7 @@
             android:id="@+id/textView18"
             android:layout_row="1"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -224,7 +221,7 @@
             android:id="@+id/textView19"
             android:layout_row="1"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -234,7 +231,7 @@
             android:id="@+id/textView20"
             android:layout_row="1"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -242,12 +239,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView21"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_row="2"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -257,7 +252,7 @@
             android:id="@+id/textView22"
             android:layout_row="2"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -267,7 +262,7 @@
             android:id="@+id/textView23"
             android:layout_row="2"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -277,7 +272,7 @@
             android:id="@+id/textView24"
             android:layout_row="2"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -287,7 +282,7 @@
             android:id="@+id/textView25"
             android:layout_row="2"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -297,7 +292,7 @@
             android:id="@+id/textView26"
             android:layout_row="2"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -307,7 +302,7 @@
             android:id="@+id/textView27"
             android:layout_row="2"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -317,7 +312,7 @@
             android:id="@+id/textView28"
             android:layout_row="2"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -327,7 +322,7 @@
             android:id="@+id/textView29"
             android:layout_row="2"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -337,7 +332,7 @@
             android:id="@+id/textView30"
             android:layout_row="2"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -345,12 +340,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView31"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_row="3"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -360,7 +353,7 @@
             android:id="@+id/textView32"
             android:layout_row="3"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -370,7 +363,7 @@
             android:id="@+id/textView33"
             android:layout_row="3"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -380,7 +373,7 @@
             android:id="@+id/textView34"
             android:layout_row="3"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -390,7 +383,7 @@
             android:id="@+id/textView35"
             android:layout_row="3"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -400,7 +393,7 @@
             android:id="@+id/textView36"
             android:layout_row="3"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -410,7 +403,7 @@
             android:id="@+id/textView37"
             android:layout_row="3"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -420,7 +413,7 @@
             android:id="@+id/textView38"
             android:layout_row="3"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -430,7 +423,7 @@
             android:id="@+id/textView39"
             android:layout_row="3"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -440,7 +433,7 @@
             android:id="@+id/textView40"
             android:layout_row="3"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -448,12 +441,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView41"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_row="4"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -463,7 +454,7 @@
             android:id="@+id/textView42"
             android:layout_row="4"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -473,7 +464,7 @@
             android:id="@+id/textView43"
             android:layout_row="4"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -483,7 +474,7 @@
             android:id="@+id/textView44"
             android:layout_row="4"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -493,7 +484,7 @@
             android:id="@+id/textView45"
             android:layout_row="4"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -503,7 +494,7 @@
             android:id="@+id/textView46"
             android:layout_row="4"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -513,7 +504,7 @@
             android:id="@+id/textView47"
             android:layout_row="4"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -523,7 +514,7 @@
             android:id="@+id/textView48"
             android:layout_row="4"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -533,7 +524,7 @@
             android:id="@+id/textView49"
             android:layout_row="4"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -543,7 +534,7 @@
             android:id="@+id/textView50"
             android:layout_row="4"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -551,12 +542,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView51"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_row="5"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -566,7 +555,7 @@
             android:id="@+id/textView52"
             android:layout_row="5"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -576,7 +565,7 @@
             android:id="@+id/textView53"
             android:layout_row="5"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -586,7 +575,7 @@
             android:id="@+id/textView54"
             android:layout_row="5"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -596,7 +585,7 @@
             android:id="@+id/textView55"
             android:layout_row="5"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -606,7 +595,7 @@
             android:id="@+id/textView56"
             android:layout_row="5"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -616,7 +605,7 @@
             android:id="@+id/textView57"
             android:layout_row="5"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -626,7 +615,7 @@
             android:id="@+id/textView58"
             android:layout_row="5"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -636,7 +625,7 @@
             android:id="@+id/textView59"
             android:layout_row="5"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -646,7 +635,7 @@
             android:id="@+id/textView60"
             android:layout_row="5"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -654,12 +643,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView61"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_row="6"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -669,7 +656,7 @@
             android:id="@+id/textView62"
             android:layout_row="6"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -679,7 +666,7 @@
             android:id="@+id/textView63"
             android:layout_row="6"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -689,7 +676,7 @@
             android:id="@+id/textView64"
             android:layout_row="6"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -699,7 +686,7 @@
             android:id="@+id/textView65"
             android:layout_row="6"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -709,7 +696,7 @@
             android:id="@+id/textView66"
             android:layout_row="6"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -719,7 +706,7 @@
             android:id="@+id/textView67"
             android:layout_row="6"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -729,7 +716,7 @@
             android:id="@+id/textView68"
             android:layout_row="6"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -739,7 +726,7 @@
             android:id="@+id/textView69"
             android:layout_row="6"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -749,7 +736,7 @@
             android:id="@+id/textView70"
             android:layout_row="6"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -757,12 +744,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView71"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_row="7"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -772,7 +757,7 @@
             android:id="@+id/textView72"
             android:layout_row="7"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -782,7 +767,7 @@
             android:id="@+id/textView73"
             android:layout_row="7"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -792,7 +777,7 @@
             android:id="@+id/textView74"
             android:layout_row="7"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -802,7 +787,7 @@
             android:id="@+id/textView75"
             android:layout_row="7"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -812,7 +797,7 @@
             android:id="@+id/textView76"
             android:layout_row="7"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -822,7 +807,7 @@
             android:id="@+id/textView77"
             android:layout_row="7"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -832,7 +817,7 @@
             android:id="@+id/textView78"
             android:layout_row="7"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -842,7 +827,7 @@
             android:id="@+id/textView79"
             android:layout_row="7"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -852,7 +837,7 @@
             android:id="@+id/textView80"
             android:layout_row="7"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -860,12 +845,9 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView81"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:layout_row="8"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -875,7 +857,7 @@
             android:id="@+id/textView82"
             android:layout_row="8"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -885,7 +867,7 @@
             android:id="@+id/textView83"
             android:layout_row="8"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -895,7 +877,7 @@
             android:id="@+id/textView84"
             android:layout_row="8"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -905,7 +887,7 @@
             android:id="@+id/textView85"
             android:layout_row="8"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -915,7 +897,7 @@
             android:id="@+id/textView86"
             android:layout_row="8"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -925,7 +907,7 @@
             android:id="@+id/textView87"
             android:layout_row="8"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -935,7 +917,7 @@
             android:id="@+id/textView88"
             android:layout_row="8"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -945,7 +927,7 @@
             android:id="@+id/textView89"
             android:layout_row="8"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -955,7 +937,7 @@
             android:id="@+id/textView90"
             android:layout_row="8"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -963,12 +945,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:id="@+id/textView91"
-            android:layout_alignTop="@+id/gameboard"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_row="9"
             android:layout_column="0"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -978,7 +958,7 @@
             android:id="@+id/textView92"
             android:layout_row="9"
             android:layout_column="1"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -988,7 +968,7 @@
             android:id="@+id/textView93"
             android:layout_row="9"
             android:layout_column="2"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -998,7 +978,7 @@
             android:id="@+id/textView94"
             android:layout_row="9"
             android:layout_column="3"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -1008,7 +988,7 @@
             android:id="@+id/textView95"
             android:layout_row="9"
             android:layout_column="4"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -1018,7 +998,7 @@
             android:id="@+id/textView96"
             android:layout_row="9"
             android:layout_column="5"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -1028,7 +1008,7 @@
             android:id="@+id/textView97"
             android:layout_row="9"
             android:layout_column="6"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -1038,7 +1018,7 @@
             android:id="@+id/textView98"
             android:layout_row="9"
             android:layout_column="7"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -1048,7 +1028,7 @@
             android:id="@+id/textView99"
             android:layout_row="9"
             android:layout_column="8"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -1058,16 +1038,16 @@
             android:id="@+id/textView100"
             android:layout_row="9"
             android:layout_column="9"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
     </GridLayout>
 
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mood"
+        android:text="@string/mood"
         android:id="@+id/mood"
-        android:textOff="Laid Back"
-        android:textOn="Aggressive"
+        android:textOff="@string/laidback"
+        android:textOn="@string/aggressive"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -1075,17 +1055,17 @@
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Auto Play"
+        android:text="@string/autoplay"
         android:id="@+id/AutoPlayButton"
-        android:textOff="Auto Play"
-        android:textOn="Stop Auto"
+        android:textOff="@string/autoplay"
+        android:textOn="@string/stopauto"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset"
+        android:text="@string/reset"
         android:id="@+id/resetGame"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -1094,7 +1074,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End on King&apos;s Death"
+        android:text="@string/endOnKing"
         android:id="@+id/endOnKing"
         android:layout_below="@+id/resetGame"
         android:layout_alignParentLeft="true"

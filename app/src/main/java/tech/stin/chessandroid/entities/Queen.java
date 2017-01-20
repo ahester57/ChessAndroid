@@ -6,11 +6,11 @@ package tech.stin.chessandroid.entities;
 public class Queen extends Entity{
 
     public Queen(){
-        super("Queen", 'q');
+        super('q');
     }
 
     public Queen(int dim[], int t){
-        super("Queen", 'q');
+        super('q');
 
         setTeam(t);
 
@@ -27,7 +27,7 @@ public class Queen extends Entity{
     }
 
     public Queen(int x, int y, int t){
-        super("Queen", 'q');
+        super('q');
 
         setTeam(t);
 

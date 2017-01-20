@@ -10,7 +10,7 @@ public class Rook extends Entity{
     private static int numRooks = 0;
 
     public Rook(int dim[], int t){
-        super("Rook", 'r');
+        super('r');
 
 
         setTeam(t);
@@ -77,14 +77,13 @@ public class Rook extends Entity{
 
     @Override
     public int[][] getPossibleDirections(){
-        int[][] locs = {
+        return new int[][]{
                 {xLoc-1, yLoc},
                 {xLoc, yLoc-1},
                 {xLoc, yLoc+1},
                 {xLoc+1, yLoc},
         };
 
-        return locs;
     }
 
 

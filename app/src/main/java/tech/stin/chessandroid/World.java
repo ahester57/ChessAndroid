@@ -45,7 +45,7 @@ class World {
         if(teams.get(0).isEmpty() || teams.get(1).isEmpty())
             over = true;
 
-        if(!over) {
+        if(!over || !endOnKing) {
             int team = cycles % 2;
             int direction;
             int distance = 1;
@@ -78,7 +78,7 @@ class World {
         if(teams.get(0).isEmpty() || teams.get(1).isEmpty())
             over = true;
 
-        if(!over) {
+        if(!over || !endOnKing) {
             int team = cycles % 2;
             int direction;
             int distance = 1;
@@ -237,6 +237,9 @@ class World {
 
     /************Move-choosing Stuff*************/
 
+
+    //@TODO change this to allow searching extended range
+
     private Entity chooseAttacker(int team){
         Entity e = new OpenSpace(' ');
         Entity temp, temp2;
@@ -298,6 +301,7 @@ class World {
 
     /************Player Stuff*************/
 
+    //Adds a player to the gameboard
     void addPlayer(Entity e){
 
         teams.get(e.getTeam()).add(e);
@@ -319,17 +323,20 @@ class World {
         entities.get(x).add(y, e);
     }
 
+    //Kills an entity
     private void kill(Entity prey) {
 
-        if(prey instanceof King && endOnKing){
+        if(prey instanceof King){
             over = true;
         }
 
+        //
         if(prey == target.get(0)){
             target.set(0, teams.get(1).get(0));
         }else if(prey == target.get(1)){
             target.set(1, teams.get(0).get(0));
         }
+
 
         teams.get(prey.getTeam()).remove(prey);
 
@@ -440,10 +447,12 @@ class World {
     }
 
     boolean isOver() {
-        if(endOnKing)
-            return over;
-        else
-            return false;
+//        if(endOnKing)
+//            return over;
+//        else
+//            return false;
+        return endOnKing && over;
     }
+
 
 }

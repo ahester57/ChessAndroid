@@ -12,7 +12,7 @@ public class Bishop extends Entity {
     private static int numBishops = 0;
 
     public Bishop(int dim[], int t){
-        super("Bishop", 'b');
+        super('b');
 
 
         setTeam(t);
@@ -41,7 +41,7 @@ public class Bishop extends Entity {
     }
 
     @Override
-    public void move(int dir){
+    public void move(int dir, int distance){
 
         switch (dir) {
             case Dir.STAY:
@@ -88,14 +88,13 @@ public class Bishop extends Entity {
 
     @Override
     public int[][] getPossibleDirections(){
-        int[][] locs = {
+        return new int[][] {
                 {xLoc-1, yLoc-1},
                 {xLoc-1, yLoc+1},
                 {xLoc+1, yLoc-1},
                 {xLoc+1, yLoc+1}
         };
 
-        return locs;
     }
 
     @Override

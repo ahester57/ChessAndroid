@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ChessAndroid</string>
+    <string name="mood">mood</string>
+    <string name="laidback">Laid Back</string>
+    <string name="aggressive">Aggressive</string>
+    <string name="autoplay">Auto Play</string>
+    <string name="stopauto">Stop Auto</string>
+    <string name="reset">Reset</string>
+    <string name="endOnKing">End on King\'s Death</string>
+    <string name="nextMove">Next Move</string>
 </resources>
