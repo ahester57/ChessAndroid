@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public abstract class Entity {
 
-    protected int xLoc, yLoc;
+    int xLoc, yLoc;
     private String name;
     private char symbol;
 
@@ -35,7 +35,7 @@ public abstract class Entity {
 
 
 
-    //Default movement, any direction
+    //Default movement, any direction, 1 square
     public void move(int dir) {
 
         switch (dir) {
@@ -77,6 +77,48 @@ public abstract class Entity {
 
     }
 
+    //Default movement, any direction, for multiple squares
+    public void move(int dir, int distance) {
+
+        switch (dir) {
+            case Dir.STAY:
+                break;
+            case Dir.LEFT:
+                yLoc-=distance;
+                break;
+            case Dir.UP_LEFT:
+                xLoc-=distance;
+                yLoc-=distance;
+                break;
+            case Dir.UP:
+                xLoc-=distance;
+                break;
+            case Dir.UP_RIGHT:
+                xLoc-=distance;
+                yLoc+=distance;
+                break;
+            case Dir.RIGHT:
+                yLoc+=distance;
+                break;
+            case Dir.DOWN_RIGHT:
+                xLoc+=distance;
+                yLoc+=distance;
+                break;
+            case Dir.DOWN:
+                xLoc+=distance;
+                break;
+            case Dir.DOWN_LEFT:
+                xLoc+=distance;
+                yLoc-=distance;
+                break;
+            default:
+                xLoc-=distance;
+
+        }
+
+    }
+
+    //@TODO fix this for range
     public boolean canAttack(ArrayList<Entity> around) {
         boolean flag = false;
         Entity temp;
@@ -104,7 +146,7 @@ public abstract class Entity {
     }
 
     public int[][] getPossibleDirections(){
-        int[][] locs = {
+        return new int[][]{
                 {xLoc-1, yLoc-1},
                 {xLoc-1, yLoc},
                 {xLoc-1, yLoc+1},
@@ -114,8 +156,6 @@ public abstract class Entity {
                 {xLoc+1, yLoc},
                 {xLoc+1, yLoc+1}
         };
-
-        return locs;
     }
 
     //this method gives the direction toward the chosen entity

@@ -5,9 +5,7 @@ import tech.stin.chessandroid.entities.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Created by Austin on 5/10/2016.
- */
+
 class World {
 
 
@@ -50,6 +48,7 @@ class World {
         if(!over) {
             int team = cycles % 2;
             int direction;
+            int distance = 1;
 
             Entity e = chooseAttacker(team);
 
@@ -65,12 +64,16 @@ class World {
                 direction = e.getAttackDir();
             }
 
-            move(e, direction);
+            if (e instanceof Queen){
+                distance = 3;
+            }
+
+            move(e, direction, distance);
         }
 
     }
 
-    void run(Entity avoid){
+    private void run(Entity avoid){
 
         if(teams.get(0).isEmpty() || teams.get(1).isEmpty())
             over = true;
@@ -78,6 +81,7 @@ class World {
         if(!over) {
             int team = cycles % 2;
             int direction;
+            int distance = 1;
 
             Entity e = chooseAttacker(team, avoid);
 
@@ -93,7 +97,11 @@ class World {
                 direction = e.getAttackDir();
             }
 
-            move(e, direction);
+            if (e instanceof Queen){
+                distance = 3;
+            }
+
+            move(e, direction, distance);
         }
 
     }
@@ -113,12 +121,15 @@ class World {
 
     /************Move Stuff*************/
 
-    private void move(Entity e, int direction){
+    private void move(Entity e, int direction, int distance){
 
         Entity oldPrev = e.getPrevEnt();
         int oldX = e.getX(), oldY = e.getY();
 
-        e.move(direction);
+        if (distance == 1)
+            e.move(direction);
+        else
+            e.move(direction, distance);
 
         //This section uses recursion and move checking
         // to make sure the team got a turn.

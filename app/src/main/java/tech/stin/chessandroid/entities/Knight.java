@@ -86,7 +86,7 @@ public class Knight extends Entity{
 
     @Override
     public int[][] getPossibleDirections(){
-        int[][] locs = {
+        return new int[][]{
                 {xLoc-1, yLoc-2},
                 {xLoc-2, yLoc-1},
                 {xLoc-2, yLoc+1},
@@ -96,8 +96,6 @@ public class Knight extends Entity{
                 {xLoc+2, yLoc-1},
                 {xLoc+1, yLoc-2}
         };
-
-        return locs;
     }
 
     //add custom direction towards

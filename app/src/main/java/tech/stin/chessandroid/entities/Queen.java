@@ -1,7 +1,5 @@
 package tech.stin.chessandroid.entities;
 
-import java.util.ArrayList;
-
 /**
  * Created by Austin on 3/27/2016.
  */
@@ -41,8 +39,8 @@ public class Queen extends Entity{
     }
 
     @Override
-    public void move(int dir){
-        super.move(dir);
+    public void move(int dir, int distance){
+        super.move(dir, distance);
 
     }
 
