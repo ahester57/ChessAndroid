@@ -41,7 +41,7 @@ public class Bishop extends Entity {
     }
 
     @Override
-    public void move(int dir){
+    public void move(int dir, double distance){
 
         switch (dir) {
             case Dir.STAY:
@@ -87,7 +87,7 @@ public class Bishop extends Entity {
     }
 
     @Override
-    public void move(int dir, double distance){
+    public void move(int dir){
         setAttackDist(getAttackDist() - 1);
         switch (dir) {
             case Dir.STAY:
