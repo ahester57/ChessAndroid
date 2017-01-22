@@ -41,7 +41,7 @@ public class Bishop extends Entity {
     }
 
     @Override
-    public void move(int dir, int distance){
+    public void move(int dir){
 
         switch (dir) {
             case Dir.STAY:
@@ -87,12 +87,69 @@ public class Bishop extends Entity {
     }
 
     @Override
+    public void move(int dir, double distance){
+        setAttackDist(getAttackDist() - 1);
+        switch (dir) {
+            case Dir.STAY:
+                break;
+            case Dir.LEFT:
+                xLoc-=getAttackDist();
+                yLoc-=getAttackDist();
+                break;
+            case Dir.UP_LEFT:
+                xLoc-=getAttackDist();
+                yLoc-=getAttackDist();
+                break;
+            case Dir.UP:
+                xLoc-=getAttackDist();
+                yLoc+=getAttackDist();
+                break;
+            case Dir.UP_RIGHT:
+                xLoc-=getAttackDist();
+                yLoc+=getAttackDist();
+                break;
+            case Dir.RIGHT:
+                xLoc+=getAttackDist();
+                yLoc+=getAttackDist();
+                break;
+            case Dir.DOWN_RIGHT:
+                xLoc+=getAttackDist();
+                yLoc+=getAttackDist();
+                break;
+            case Dir.DOWN:
+                xLoc+=getAttackDist();
+                yLoc-=getAttackDist();
+                break;
+            case Dir.DOWN_LEFT:
+                xLoc+=getAttackDist();
+                yLoc-=getAttackDist();
+                break;
+            default:
+                xLoc+=getAttackDist();
+                yLoc-=getAttackDist();
+
+        }
+
+    }
+
+    @Override
     public int[][] getPossibleDirections(){
         return new int[][] {
                 {xLoc-1, yLoc-1},
+                {xLoc-2, yLoc-2},
+                {xLoc-3, yLoc-3},
+
                 {xLoc-1, yLoc+1},
+                {xLoc-2, yLoc+2},
+                {xLoc-3, yLoc+3},
+
                 {xLoc+1, yLoc-1},
-                {xLoc+1, yLoc+1}
+                {xLoc+2, yLoc-2},
+                {xLoc+3, yLoc-3},
+
+                {xLoc+1, yLoc+1},
+                {xLoc+2, yLoc+2},
+                {xLoc+3, yLoc+3}
         };
 
     }

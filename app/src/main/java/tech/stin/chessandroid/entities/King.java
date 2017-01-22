@@ -48,6 +48,20 @@ public class King extends Entity {
     }
 
     @Override
+    public int[][] getPossibleDirections(){
+        return new int[][]{
+                {xLoc-1, yLoc-1},
+                {xLoc-1, yLoc},
+                {xLoc-1, yLoc+1},
+                {xLoc, yLoc-1},
+                {xLoc, yLoc+1},
+                {xLoc+1, yLoc-1},
+                {xLoc+1, yLoc},
+                {xLoc+1, yLoc+1}
+        };
+    }
+
+    @Override
     public char symbols(){
         if(getTeam() == 0) {
 

@@ -1,5 +1,7 @@
 package tech.stin.chessandroid;
 
+import android.os.Debug;
+
 import tech.stin.chessandroid.entities.*;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ class World {
 
     private Random rand;
     private static int cycles = 0;
+    private int count;
 
     World(int r, int c){
         rand = new Random();
@@ -36,72 +39,136 @@ class World {
         endOnKing = true;
         aggressive = false;
         over = false;
+        count = 0;
 
         makeEntityGrid(r, c);
     }
 
     void run(){
-
-        if(teams.get(0).isEmpty() || teams.get(1).isEmpty())
+        //Debug.startMethodTracing("run");
+        if(teams.get(0).isEmpty() || teams.get(1).isEmpty()) {
             over = true;
-
-        if(!over || !endOnKing) {
-            int team = cycles % 2;
-            int direction;
-            int distance = 1;
-
-            Entity e = chooseAttacker(team);
-
-            //why do pawns have to be such asses
-            //picks a random player from the current team if no attacker available
-            if (e instanceof OpenSpace) {
-                e = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
-                if (aggressive)
-                    direction = e.getDirectionToward(target.get(team));
-                else
-                    direction = (int) (rand.nextDouble() * 8) * 45;
-            } else {
-                direction = e.getAttackDir();
-            }
-
-            if (e instanceof Queen){
-                distance = 3;
-            }
-
-            move(e, direction, distance);
+            return;
         }
 
-    }
-
-    private void run(Entity avoid){
-
-        if(teams.get(0).isEmpty() || teams.get(1).isEmpty())
-            over = true;
-
         if(!over || !endOnKing) {
             int team = cycles % 2;
-            int direction;
+            int direction = 90;
             int distance = 1;
+            count = 0;
 
-            Entity e = chooseAttacker(team, avoid);
+
+            ArrayList<Entity> attackers = chooseAttacker(team);
 
             //why do pawns have to be such asses
             //picks a random player from the current team if no attacker available
-            if (e instanceof OpenSpace) {
-                e = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
-                if (aggressive)
-                    direction = e.getDirectionToward(target.get(team));
-                else
-                    direction = (int) (rand.nextDouble() * 8) * 45;
+
+            // @TODO add old function back if list empty
+
+            if (attackers.size() == 0) {
+
             } else {
-                direction = e.getAttackDir();
+                for (Entity e : attackers) {
+                    if (e instanceof OpenSpace) {
+                        e = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
+                        attackers.set(0, e);
+
+                        for (int i = 0; i < teams.get(team).size(); i++)
+                            attackers.add(teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size())));
+
+                        if (!(e instanceof Pawn)) {
+                            if (aggressive) {
+                                e.setAttackDir(e.getDirectionToward(target.get(team)));
+                                //e.setAttackDist()
+                            } else {
+                                e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
+
+                                //direction = (int) (rand.nextDouble() * 8) * 45;
+                            }
+                        }
+                    } else {
+                        direction = e.getAttackDir();
+                    }
+
+
+                }
             }
 
-            if (e instanceof Queen){
-                distance = 3;
+            // @TODO fix it not workng
+            // @TODO fix getting stuck, add *random* move when stuck
+
+            //pick best attacker
+            int best = rand.nextInt(attackers.size()); // = chooseBestMove();
+
+
+//            if (attackers.size() > 1)
+//                best = rand.nextDouble() > 0.5 ? 0 : 1; // = chooseBestMove();
+
+            move(attackers.get(best), attackers.get(best).getAttackDir(), distance);
+
+            //move(attackers.get(best), direction, distance);
+        }
+        //Debug.stopMethodTracing();
+    }
+
+
+    // When chosen attacker's move is invalid, try again, skipping previously choosen
+    private void run(Entity avoid){
+        if(teams.get(0).isEmpty() || teams.get(1).isEmpty()) {
+            over = true;
+            return;
+        }
+
+        if(!over || !endOnKing) {
+            int team = cycles % 2;
+            int direction = 90;
+            int distance = 1;
+
+            ArrayList<Entity> attackers = chooseAttacker(team, avoid);
+
+            //why do pawns have to be such asses
+            //picks a random player from the current team if no attacker available
+
+            for (Entity e : attackers){
+                if (e instanceof OpenSpace) {
+                    e = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
+                    attackers.set(0, e);
+
+                    for (int i = 0; i < teams.get(team).size(); i++)
+                        attackers.add(teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size())));
+
+                    if (!(e instanceof Pawn)) {
+                        if (aggressive) {
+                            e.setAttackDir(e.getDirectionToward(target.get(team)));
+                            //e.setAttackDist()
+                        }else {
+                            e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
+
+                            //direction = (int) (rand.nextDouble() * 8) * 45;
+                        }
+                    }
+                } else {
+
+                    direction = e.getAttackDir();
+                }
+
+
             }
 
-            move(e, direction, distance);
+
+            //pick best attacker
+            int best = rand.nextInt(attackers.size()); // = chooseBestMove();
+            count++;
+
+            if (count > 2000) {
+                over = true;
+                endOnKing = true;
+
+                return;
+            }
+
+
+            move(attackers.get(best), attackers.get(best).getAttackDir(), distance);
         }
 
     }
@@ -125,11 +192,13 @@ class World {
 
         Entity oldPrev = e.getPrevEnt();
         int oldX = e.getX(), oldY = e.getY();
+//
 
-        if (distance == 1)
-            e.move(direction);
-        else
-            e.move(direction, distance);
+        e.move(direction);
+//        if (distance == 1)
+//            e.move(direction);
+//        else
+//            e.move(direction, distance);
 
         //This section uses recursion and move checking
         // to make sure the team got a turn.
@@ -148,7 +217,7 @@ class World {
                             if (!(e instanceof Pawn)) {
                                 kill(newLoc);
                                 actuallyMove(e, oldPrev, oldX, oldY);
-                            } else if (e.getAttackDir() != Entity.Dir.UP && e.getAttackDir() != Entity.Dir.DOWN) {
+                            } else if ((e.getAttackDir() != Entity.Dir.UP && e.getAttackDir() != Entity.Dir.DOWN) || ((Pawn) e).isQueen()) {
                                 //make sure pawn doesn't attack forward randomly
                                 kill(newLoc);
                                 actuallyMove(e, oldPrev, oldX, oldY);
@@ -166,7 +235,7 @@ class World {
                     } else {
                         //trying to move into a border
                         put(e, oldX, oldY);
-                        run(e);
+                        run(e); // add only avoid recent move
                     }
                 } else {
                     //to an invalid location
@@ -239,64 +308,83 @@ class World {
 
 
     //@TODO change this to allow searching extended range
+    //@TODO compile
 
-    private Entity chooseAttacker(int team){
-        Entity e = new OpenSpace(' ');
-        Entity temp, temp2;
+    private ArrayList<Entity> chooseAttacker(int team){
+        ArrayList<Entity> attackers = new ArrayList<>();
+
+        Entity source, target;
 
         ArrayList<Entity> closeEntities;
 
         for(int i = 0; i < teams.get(team).size(); i++){
 
-            temp = teams.get(team).get(i);
+            source = teams.get(team).get(i);
+
+
+            // Change closeEntities to potential targets
+            // Consider giving row / column owned
+            // Do up / down first, then diagonal
 
             closeEntities = new ArrayList<>();
 
-            for(int[] coords : temp.getPossibleDirections()){
-                temp2 = getEntity(coords[0], coords[1]);
-                if(temp2 != null)
-                    closeEntities.add(temp2);
+            for(int[] coords : source.getPossibleDirections()){
+                target = getEntity(coords[0], coords[1]);
+                if(target != null)
+                    closeEntities.add(target);
             }
 
-            if(temp.canAttack(closeEntities)){
-                e = temp;
-                return e;
+
+            // Instead of returning right away, make list then choose best option
+
+
+            if(source.canAttack(closeEntities)){
+                attackers.add(source);
+
             }
 
         }
 
-        return e;
+        if(attackers.isEmpty())
+            attackers.add(new OpenSpace(' '));
+
+
+        return attackers;
     }
 
-    private Entity chooseAttacker(int team, Entity avoid){
-        Entity e = new OpenSpace(' ');
-        Entity temp, temp2;
+    private ArrayList<Entity> chooseAttacker(int team, Entity avoid){
+        ArrayList<Entity> attackers = new ArrayList<>();
+
+        Entity source, target;
 
         ArrayList<Entity> closeEntities;
 
         for(int i = 0; i < teams.get(team).size(); i++){
 
-            temp = teams.get(team).get(i);
+            source = teams.get(team).get(i);
 
             closeEntities = new ArrayList<>();
 
-            for(int[] coords : temp.getPossibleDirections()){
-                temp2 = getEntity(coords[0], coords[1]);
-                if(temp2 != null)
-                    closeEntities.add(temp2);
+            for(int[] coords : source.getPossibleDirections()){
+                target = getEntity(coords[0], coords[1]);
+                if(target != null)
+                    closeEntities.add(target);
             }
 
-            if(temp.canAttack(closeEntities)){
-                if(temp == avoid){
+            if(source.canAttack(closeEntities)){
+                if(source.getX() == avoid.getX() && source.getY() == avoid.getY()){
                     continue;
                 }
-                e = temp;
-                return e;
+                attackers.add(source);
+
             }
 
         }
 
-        return e;
+        if(attackers.isEmpty())
+            attackers.add(new OpenSpace(' '));
+
+        return attackers;
     }
 
     /************Player Stuff*************/
@@ -439,12 +527,16 @@ class World {
 
     Entity getEntity(int r, int c){
         try{
-            return entities.get(r).get(c);
+            if (r < 10 && c < 10)
+                return entities.get(r).get(c);
+            else
+                return null;
         }catch (IndexOutOfBoundsException iobe){
             return null;
         }
 
     }
+
 
     boolean isOver() {
 //        if(endOnKing)

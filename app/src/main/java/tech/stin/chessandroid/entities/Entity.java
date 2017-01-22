@@ -18,6 +18,8 @@ public abstract class Entity {
     private int team;
     private Entity prevEnt;
     private int attackDir;
+    private int prevAttackDir;
+    private int attackDist;
 
 
 
@@ -27,13 +29,13 @@ public abstract class Entity {
 
     Entity(char s) {
         symbol = s;
-
+        attackDist = 1;
     }
 
 
 
     //Default movement, any direction, 1 square
-    public void move(int dir) {
+    public void move(int dir, double asdf) {
 
         switch (dir) {
             case Dir.STAY:
@@ -76,47 +78,50 @@ public abstract class Entity {
 
     //@TODO Generalize this
     //Default movement, any direction, for multiple squares
-    public void move(int dir, int distance) {
+    public void move(int dir) {
+        setPrevAttackDir(dir);
 
         switch (dir) {
             case Dir.STAY:
                 break;
             case Dir.LEFT:
-                yLoc-=distance;
+                yLoc-=getAttackDist();
                 break;
             case Dir.UP_LEFT:
-                xLoc-=distance;
-                yLoc-=distance;
+                xLoc-=getAttackDist();
+                yLoc-=getAttackDist();
                 break;
             case Dir.UP:
-                xLoc-=distance;
+                xLoc-=getAttackDist();
                 break;
             case Dir.UP_RIGHT:
-                xLoc-=distance;
-                yLoc+=distance;
+                xLoc-=getAttackDist();
+                yLoc+=getAttackDist();
                 break;
             case Dir.RIGHT:
-                yLoc+=distance;
+                yLoc+=getAttackDist();
                 break;
             case Dir.DOWN_RIGHT:
-                xLoc+=distance;
-                yLoc+=distance;
+                xLoc+=getAttackDist();
+                yLoc+=getAttackDist();
                 break;
             case Dir.DOWN:
-                xLoc+=distance;
+                xLoc+=getAttackDist();
                 break;
             case Dir.DOWN_LEFT:
-                xLoc+=distance;
-                yLoc-=distance;
+                xLoc+=getAttackDist();
+                yLoc-=attackDist;
                 break;
             default:
-                xLoc-=distance;
+                xLoc-=getAttackDist();
 
         }
+        setAttackDist(1);
 
     }
 
-    //@TODO fix this for range
+    // @TODO fix this for range
+    // @TODO fix jumping over people
     public boolean canAttack(ArrayList<Entity> around) {
         boolean flag = false;
         Entity temp;
@@ -125,7 +130,7 @@ public abstract class Entity {
         for(int i = 0; i < around.size(); i++){
 
             temp = around.get(i);
-            if(!(temp instanceof Border) && !(temp instanceof OpenSpace)){
+            if(!(temp instanceof Border) && !(temp instanceof OpenSpace) && temp != null){
 
                 if(temp.getTeam() != this.getTeam()){
 
@@ -134,7 +139,10 @@ public abstract class Entity {
                     //make this better steal from clowns
 
                     setAttackDir(getDirectionToward(temp));
+                    setAttackDist(getDistance(temp));
 
+                }else{
+                    setAttackDist(getDistance(temp) - 1);
                 }
             }
 
@@ -143,16 +151,44 @@ public abstract class Entity {
         return flag;
     }
 
+    // @TODO change for range extension
+    // @TODO given loc, scan for row
+
     public int[][] getPossibleDirections(){
         return new int[][]{
                 {xLoc-1, yLoc-1},
+                {xLoc-2, yLoc-2},
+                {xLoc-3, yLoc-3},
+
                 {xLoc-1, yLoc},
+                {xLoc-2, yLoc},
+                {xLoc-3, yLoc},
+
                 {xLoc-1, yLoc+1},
+                {xLoc-2, yLoc+2},
+                {xLoc-3, yLoc+3},
+
                 {xLoc, yLoc-1},
+                {xLoc, yLoc-2},
+                {xLoc, yLoc-3},
+
+
                 {xLoc, yLoc+1},
+                {xLoc, yLoc+2},
+                {xLoc, yLoc+3},
+
                 {xLoc+1, yLoc-1},
+                {xLoc+2, yLoc-2},
+                {xLoc+3, yLoc-3},
+
                 {xLoc+1, yLoc},
-                {xLoc+1, yLoc+1}
+                {xLoc+2, yLoc},
+                {xLoc+3, yLoc},
+
+
+                {xLoc+1, yLoc+1},
+                {xLoc+2, yLoc+2},
+                {xLoc+3, yLoc+3}
         };
     }
 
@@ -194,6 +230,11 @@ public abstract class Entity {
         return direction;
     }
 
+    private int getDistance(Entity toward){
+        return (int) Math.sqrt(Math.pow( ((double) xLoc - (double) toward.getX()) , 2)
+                                + Math.pow( ((double) yLoc - (double) toward.getY()) , 2));
+    }
+
 
     //Use this later
 //    ArrayList<Node> getAttackLocs(ArrayList<ArrayList<Entity>> grid){
@@ -222,9 +263,19 @@ public abstract class Entity {
         team = t;
     }
 
-    void setAttackDir(int aD) {
+    public void setAttackDir(int aD) {
         attackDir = aD;
     }
+
+    void setPrevAttackDir(int dir) {
+        prevAttackDir = dir;
+    }
+
+    public int getPrevAttackDir() {
+        return prevAttackDir;
+    }
+
+    public void setAttackDist(int dist) { attackDist = dist; }
 
     public Entity getPrevEnt() {
         return prevEnt;
@@ -249,6 +300,8 @@ public abstract class Entity {
     public int getAttackDir() {
         return attackDir;
     }
+
+    public int getAttackDist() { return attackDist; }
 
     public char symbols() {
         return 'e';

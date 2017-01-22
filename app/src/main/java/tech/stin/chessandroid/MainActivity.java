@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button nextTurn;
     private ToggleButton autoAdvance;
     private Timer timer;
+    private boolean stopTime;
     private Spinner colorPicker;
 
     private boolean aggressive;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         colors.add("Blue");
         colors.add("Black");
         colors.add("Green");
+        colors.add("Red");
+        colors.add("Purple");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, colors);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -82,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             aggressive = false;
             autoPlay = false;
             endOnKing = true;
+            stopTime = false;
 
             initGameboard();
             initWorld();
@@ -96,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     if(world.isOver()) {
                         nextTurn.setEnabled(false);
                         autoAdvance.setEnabled(false);
+                        stopTime = true;
                     }
                 }
             });
@@ -122,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
                 final TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-                        Timer_Run();
+                        if (!stopTime)
+                            Timer_Run();
                     }
                 };
                 private boolean first = true;
@@ -131,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     autoPlay = isChecked;
                     if(first){
                         first = false;
+                        stopTime = false;
                         timer = new Timer();
                         timer.schedule(task, 200, 400);
                     }
@@ -175,8 +182,17 @@ public class MainActivity extends AppCompatActivity {
                             updateColor(Color.BLACK);
                             break;
                         case "Green":
-                            updateColor(Color.parseColor("#8fbc8f"));
+                            updateColor(Color.parseColor("#248a38"));
                             break;
+                        case "Red":
+                            updateColor(Color.parseColor("#ff0e0e"));
+                            break;
+                        case "Purple":
+                            updateColor(Color.parseColor("#732493"));
+                            break;
+                        default:
+                            updateColor(Color.BLUE);
+
                     }
                 }
 
@@ -194,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void reset(){
         autoPlay = false;
+        stopTime = false;
+
         autoAdvance.setEnabled(true);
         autoAdvance.setChecked(false);
         //mood.setChecked(false);

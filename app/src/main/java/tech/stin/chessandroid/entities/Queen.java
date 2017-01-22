@@ -39,7 +39,12 @@ public class Queen extends Entity{
     }
 
     @Override
-    public void move(int dir, int distance){
+    public void move(int dir){
+        super.move(dir);
+    }
+
+    @Override
+    public void move(int dir, double distance){
         super.move(dir, distance);
 
     }

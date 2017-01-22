@@ -145,6 +145,7 @@ public class Pawn extends Entity{
         isQueen = true;
     }
 
+    public boolean isQueen() {return isQueen; }
 
     @Override
     public char symbols(){

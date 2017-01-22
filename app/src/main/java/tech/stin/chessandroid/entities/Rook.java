@@ -40,36 +40,37 @@ public class Rook extends Entity{
 
     @Override
     public void move(int dir){
+        setPrevAttackDir(dir);
 
         switch (dir) {
             case Dir.STAY:
                 break;
             case Dir.LEFT:
-                yLoc--;
+                yLoc-=getAttackDist();
                 break;
             case Dir.UP_LEFT:
-                yLoc--;
+                yLoc-=getAttackDist();
                 break;
             case Dir.UP:
-                xLoc--;
+                xLoc-=getAttackDist();
                 break;
             case Dir.UP_RIGHT:
-                xLoc--;
+                xLoc-=getAttackDist();
                 break;
             case Dir.RIGHT:
-                yLoc++;
+                yLoc+=getAttackDist();
                 break;
             case Dir.DOWN_RIGHT:
-                yLoc++;
+                yLoc+=getAttackDist();
                 break;
             case Dir.DOWN:
-                xLoc++;
+                xLoc+=getAttackDist();
                 break;
             case Dir.DOWN_LEFT:
-                xLoc++;
+                xLoc+=getAttackDist();
                 break;
             default:
-                xLoc--;
+                xLoc-=getAttackDist();
 
         }
 
@@ -79,9 +80,20 @@ public class Rook extends Entity{
     public int[][] getPossibleDirections(){
         return new int[][]{
                 {xLoc-1, yLoc},
+                {xLoc-2, yLoc},
+                {xLoc-3, yLoc},
+
                 {xLoc, yLoc-1},
+                {xLoc, yLoc-2},
+                {xLoc, yLoc-3},
+
                 {xLoc, yLoc+1},
+                {xLoc, yLoc+2},
+                {xLoc, yLoc+3},
+
                 {xLoc+1, yLoc},
+                {xLoc+2, yLoc},
+                {xLoc+3, yLoc}
         };
 
     }

@@ -14,3 +14,12 @@ Austin Hester - UMSL CS
 	- scan for 'dangerous' squares
 	- FUTURE: don't move to 'dangerous' spot unless reward > risk
 		  if multiple 'underAttack', save most important
+
+01/21/17
+--------
+- implemented range extension (Note: they may jump over each other, will fix)
+- cleaned up code a bit
+- added search limit for moves of 2000 (generous), stops task timer and
+		ends game if reached
+
+
