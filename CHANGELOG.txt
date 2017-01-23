@@ -22,4 +22,8 @@ Austin Hester - UMSL CS
 - added search limit for moves of 2000 (generous), stops task timer and
 		ends game if reached
 
+01/22/17
+--------
+- changed distance formula to Taxi cab method
+
 

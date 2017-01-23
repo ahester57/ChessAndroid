@@ -53,8 +53,6 @@ class World {
 
         if(!over || !endOnKing) {
             int team = cycles % 2;
-            int direction = 90;
-            int distance = 1;
             count = 0;
 
 
@@ -66,7 +64,9 @@ class World {
             // @TODO add old function back if list empty
 
             if (attackers.size() == 0) {
-
+                Entity en = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
+                en.setAttackDir(en.getDirectionToward(target.get(team)));
+                move(en, en.getAttackDir());
             } else {
                 for (Entity e : attackers) {
                     if (e instanceof OpenSpace) {
@@ -87,7 +87,8 @@ class World {
                             }
                         }
                     } else {
-                        direction = e.getAttackDir();
+
+
                     }
 
 
@@ -104,7 +105,7 @@ class World {
 //            if (attackers.size() > 1)
 //                best = rand.nextDouble() > 0.5 ? 0 : 1; // = chooseBestMove();
 
-            move(attackers.get(best), attackers.get(best).getAttackDir(), distance);
+            move(attackers.get(best), attackers.get(best).getAttackDir());
 
             //move(attackers.get(best), direction, distance);
         }
@@ -121,8 +122,6 @@ class World {
 
         if(!over || !endOnKing) {
             int team = cycles % 2;
-            int direction = 90;
-            int distance = 1;
 
             ArrayList<Entity> attackers = chooseAttacker(team, avoid);
 
@@ -149,7 +148,6 @@ class World {
                     }
                 } else {
 
-                    direction = e.getAttackDir();
                 }
 
 
@@ -168,7 +166,7 @@ class World {
             }
 
 
-            move(attackers.get(best), attackers.get(best).getAttackDir(), distance);
+            move(attackers.get(best), attackers.get(best).getAttackDir());
         }
 
     }
@@ -188,7 +186,7 @@ class World {
 
     /************Move Stuff*************/
 
-    private void move(Entity e, int direction, int distance){
+    private void move(Entity e, int direction){
 
         Entity oldPrev = e.getPrevEnt();
         int oldX = e.getX(), oldY = e.getY();

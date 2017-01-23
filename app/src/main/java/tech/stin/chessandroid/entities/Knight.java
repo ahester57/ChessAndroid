@@ -99,6 +99,44 @@ public class Knight extends Entity{
     }
 
     //add custom direction towards
+    // @TODO make knights stop missing
+    @Override
+    public int getDirectionToward(Entity enemy) {
+
+        int direction;
+
+
+        int[] enemyLoc = {enemy.getX(), enemy.getY()};
+        int x = getX(), y = getY();
+
+        if (x > enemyLoc[0]) {
+            if (y > enemyLoc[1]) {
+                direction = Dir.UP_LEFT;
+            } else if (y < enemyLoc[1]) {
+                direction = Dir.UP_RIGHT;
+            } else {
+                direction = Dir.UP;
+            }
+        } else if (x < enemyLoc[0]) {
+            if (y > enemyLoc[1]) {
+                direction = Dir.DOWN_LEFT;
+            } else if (y < enemyLoc[1]) {
+                direction = Dir.DOWN_RIGHT;
+            } else {
+                direction = Dir.DOWN;
+            }
+        } else {
+            if (y > enemyLoc[1]) {
+                direction = Dir.LEFT;
+            } else if (y < enemyLoc[1]) {
+                direction = Dir.RIGHT;
+            } else {
+                direction = Dir.RIGHT;
+            }
+        }
+
+        return direction;
+    }
 
     @Override
     public char symbols(){

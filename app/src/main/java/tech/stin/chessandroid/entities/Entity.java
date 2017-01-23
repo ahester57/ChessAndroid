@@ -34,52 +34,58 @@ public abstract class Entity {
 
 
 
-    //Default movement, any direction, 1 square
-    public void move(int dir, double asdf) {
-
-        switch (dir) {
-            case Dir.STAY:
-                break;
-            case Dir.LEFT:
-                yLoc--;
-                break;
-            case Dir.UP_LEFT:
-                xLoc--;
-                yLoc--;
-                break;
-            case Dir.UP:
-                xLoc--;
-                break;
-            case Dir.UP_RIGHT:
-                xLoc--;
-                yLoc++;
-                break;
-            case Dir.RIGHT:
-                yLoc++;
-                break;
-            case Dir.DOWN_RIGHT:
-                xLoc++;
-                yLoc++;
-                break;
-            case Dir.DOWN:
-                xLoc++;
-                break;
-            case Dir.DOWN_LEFT:
-                xLoc++;
-                yLoc--;
-                break;
-            default:
-                xLoc--;
-
-        }
-
-
-    }
+//    //Default movement, any direction, 1 square
+//    public void move(int dir, double asdf) {
+//
+//        switch (dir) {
+//            case Dir.STAY:
+//                break;
+//            case Dir.LEFT:
+//                yLoc--;
+//                break;
+//            case Dir.UP_LEFT:
+//                xLoc--;
+//                yLoc--;
+//                break;
+//            case Dir.UP:
+//                xLoc--;
+//                break;
+//            case Dir.UP_RIGHT:
+//                xLoc--;
+//                yLoc++;
+//                break;
+//            case Dir.RIGHT:
+//                yLoc++;
+//                break;
+//            case Dir.DOWN_RIGHT:
+//                xLoc++;
+//                yLoc++;
+//                break;
+//            case Dir.DOWN:
+//                xLoc++;
+//                break;
+//            case Dir.DOWN_LEFT:
+//                xLoc++;
+//                yLoc--;
+//                break;
+//            default:
+//                xLoc--;
+//
+//        }
+//
+//
+//    }
 
     //@TODO Generalize this
     //Default movement, any direction, for multiple squares
     public void move(int dir) {
         setPrevAttackDir(dir);
+
+        if (dir % 10 == 5)
+            setAttackDist(getAttackDist() / 2);
+
+        if (this instanceof King)
+            setAttackDist(1);
 
         switch (dir) {
             case Dir.STAY:
@@ -139,10 +145,11 @@ public abstract class Entity {
                     //make this better steal from clowns
 
                     setAttackDir(getDirectionToward(temp));
+
                     setAttackDist(getDistance(temp));
 
                 }else{
-                    setAttackDist(getDistance(temp) - 1);
+                    setAttackDist(getDistance(temp));
                 }
             }
 
@@ -231,17 +238,12 @@ public abstract class Entity {
     }
 
     private int getDistance(Entity toward){
-        return (int) Math.sqrt(Math.pow( ((double) xLoc - (double) toward.getX()) , 2)
-                                + Math.pow( ((double) yLoc - (double) toward.getY()) , 2));
+        // Taxicab!
+        return (Math.abs(xLoc - toward.getX()) + Math.abs(yLoc - toward.getY()));
+        //return (int) Math.sqrt(Math.pow( ((double) xLoc - (double) toward.getX()) , 2)
+                               // + Math.pow( ((double) yLoc - (double) toward.getY()) , 2));
     }
 
-
-    //Use this later
-//    ArrayList<Node> getAttackLocs(ArrayList<ArrayList<Entity>> grid){
-//        ArrayList<Node> list = new ArrayList<>();
-//
-//        return list;
-//    }
 
     public void setPrevEnt(Entity e) {
         prevEnt = e;
@@ -308,8 +310,11 @@ public abstract class Entity {
     }
 
     @Override
-    public String toString() {
-        return String.valueOf(symbol);
+    public String toString() { return String.valueOf(symbol); }
+
+    public String getInfo() {
+        return String.valueOf(symbol) + " - " + String.valueOf(attackDir)
+                + ", " + String.valueOf(attackDist);
     }
 
     public static class Dir {

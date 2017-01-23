@@ -1084,10 +1084,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
-        android:spinnerMode="dialog"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/endOnKing"
+        android:layout_toEndOf="@+id/endOnKing"
+        android:layout_above="@+id/endOnKing" />
+
+    <TextView
+        android:text="test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/debugInfo"
+        android:layout_toLeftOf="@+id/spinner"
         android:layout_toRightOf="@+id/resetGame"
         android:layout_toEndOf="@+id/resetGame"
         android:layout_above="@+id/endOnKing" />

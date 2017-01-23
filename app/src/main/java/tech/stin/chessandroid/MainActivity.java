@@ -244,29 +244,29 @@ public class MainActivity extends AppCompatActivity {
         //correctly.
         world.addPlayer(new King(dimensions, 0));
         world.addPlayer(new Queen(dimensions, 0));
+
+        world.addPlayer(new Bishop(dimensions, 0));
+        world.addPlayer(new Bishop(dimensions, 0));
+        world.addPlayer(new Knight(dimensions, 0));
+        world.addPlayer(new Knight(dimensions, 0));
+        world.addPlayer(new Rook(dimensions, 0));
+        world.addPlayer(new Rook(dimensions, 0));
         for(int i = 0; i < 8; i++) {
             world.addPlayer(new Pawn(dimensions, 0));
         }
-        world.addPlayer(new Bishop(dimensions, 0));
-        world.addPlayer(new Bishop(dimensions, 0));
-        world.addPlayer(new Knight(dimensions, 0));
-        world.addPlayer(new Knight(dimensions, 0));
-        world.addPlayer(new Rook(dimensions, 0));
-        world.addPlayer(new Rook(dimensions, 0));
-
 
         world.addPlayer(new King(dimensions, 1));
         world.addPlayer(new Queen(dimensions, 1));
+
+        world.addPlayer(new Bishop(dimensions, 1));
+        world.addPlayer(new Bishop(dimensions, 1));
+        world.addPlayer(new Knight(dimensions, 1));
+        world.addPlayer(new Knight(dimensions, 1));
+        world.addPlayer(new Rook(dimensions, 1));
+        world.addPlayer(new Rook(dimensions, 1));
         for(int i = 0; i < 8; i++) {
             world.addPlayer(new Pawn(dimensions, 1));
         }
-        world.addPlayer(new Bishop(dimensions, 1));
-        world.addPlayer(new Bishop(dimensions, 1));
-        world.addPlayer(new Knight(dimensions, 1));
-        world.addPlayer(new Knight(dimensions, 1));
-        world.addPlayer(new Rook(dimensions, 1));
-        world.addPlayer(new Rook(dimensions, 1));
-
 
     }
 
