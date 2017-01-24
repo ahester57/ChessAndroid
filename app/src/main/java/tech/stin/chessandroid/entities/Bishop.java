@@ -88,47 +88,48 @@ public class Bishop extends Entity {
 
     @Override
     public void move(int dir){
-        setAttackDist(getAttackDist() / 2);
+        setPrevAttackDir(dir);
 
+        int[] dist = getAttackDist();
 
         switch (dir) {
             case Dir.STAY:
                 break;
             case Dir.LEFT:
-                xLoc-=getAttackDist();
-                yLoc-=getAttackDist();
+                xLoc-=dist[0];
+                yLoc-=dist[1];
                 break;
             case Dir.UP_LEFT:
-                xLoc-=getAttackDist();
-                yLoc-=getAttackDist();
+                xLoc-=dist[0];
+                yLoc-=dist[1];
                 break;
             case Dir.UP:
-                xLoc-=getAttackDist();
-                yLoc+=getAttackDist();
+                xLoc-=dist[0];
+                yLoc+=dist[1];
                 break;
             case Dir.UP_RIGHT:
-                xLoc-=getAttackDist();
-                yLoc+=getAttackDist();
+                xLoc-=dist[0];
+                yLoc+=dist[1];
                 break;
             case Dir.RIGHT:
-                xLoc+=getAttackDist();
-                yLoc+=getAttackDist();
+                xLoc+=dist[0];
+                yLoc+=dist[1];
                 break;
             case Dir.DOWN_RIGHT:
-                xLoc+=getAttackDist();
-                yLoc+=getAttackDist();
+                xLoc+=dist[0];
+                yLoc+=dist[1];
                 break;
             case Dir.DOWN:
-                xLoc+=getAttackDist();
-                yLoc-=getAttackDist();
+                xLoc+=dist[0];
+                yLoc-=dist[1];
                 break;
             case Dir.DOWN_LEFT:
-                xLoc+=getAttackDist();
-                yLoc-=getAttackDist();
+                xLoc+=dist[0];
+                yLoc-=dist[1];
                 break;
             default:
-                xLoc+=getAttackDist();
-                yLoc-=getAttackDist();
+                xLoc+=dist[0];
+                yLoc-=dist[1];
 
         }
 

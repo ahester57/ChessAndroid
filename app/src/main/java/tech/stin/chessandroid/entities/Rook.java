@@ -42,35 +42,37 @@ public class Rook extends Entity{
     public void move(int dir){
         setPrevAttackDir(dir);
 
+        int[] dist = getAttackDist();
+
         switch (dir) {
             case Dir.STAY:
                 break;
             case Dir.LEFT:
-                yLoc-=getAttackDist();
+                yLoc-=dist[1];
                 break;
             case Dir.UP_LEFT:
-                yLoc-=getAttackDist();
+                yLoc-=dist[1];
                 break;
             case Dir.UP:
-                xLoc-=getAttackDist();
+                xLoc-=dist[0];
                 break;
             case Dir.UP_RIGHT:
-                xLoc-=getAttackDist();
+                xLoc-=dist[0];
                 break;
             case Dir.RIGHT:
-                yLoc+=getAttackDist();
+                yLoc+=dist[1];
                 break;
             case Dir.DOWN_RIGHT:
-                yLoc+=getAttackDist();
+                yLoc+=dist[1];
                 break;
             case Dir.DOWN:
-                xLoc+=getAttackDist();
+                xLoc+=dist[0];
                 break;
             case Dir.DOWN_LEFT:
-                xLoc+=getAttackDist();
+                xLoc+=dist[0];
                 break;
             default:
-                xLoc-=getAttackDist();
+                xLoc-=dist[0];
 
         }
 

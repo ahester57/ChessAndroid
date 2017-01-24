@@ -66,6 +66,7 @@ class World {
             if (attackers.size() == 0) {
                 Entity en = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
                 en.setAttackDir(en.getDirectionToward(target.get(team)));
+                en.setAttackDist(1, 1);
                 move(en, en.getAttackDir());
             } else {
                 for (Entity e : attackers) {

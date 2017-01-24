@@ -26,4 +26,8 @@ Austin Hester - UMSL CS
 --------
 - changed distance formula to Taxi cab method
 
-
+01/23/17
+--------
+- split up distance calculation into xDist & yDist!
+@TODO
+	- fix knight missing sometimes

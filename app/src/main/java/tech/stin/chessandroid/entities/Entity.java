@@ -19,7 +19,7 @@ public abstract class Entity {
     private Entity prevEnt;
     private int attackDir;
     private int prevAttackDir;
-    private int attackDist;
+    private int xDist, yDist;
 
 
 
@@ -29,7 +29,7 @@ public abstract class Entity {
 
     Entity(char s) {
         symbol = s;
-        attackDist = 1;
+        xDist = yDist = 1;
     }
 
 
@@ -76,53 +76,60 @@ public abstract class Entity {
 //
 //    }
 
+    public void move(){
+
+
+    }
+
     //@TODO Generalize this
     //Default movement, any direction, for multiple squares
     public void move(int dir) {
         setPrevAttackDir(dir);
-
-        if (dir % 10 == 5)
-            setAttackDist(getAttackDist() / 2);
+//
+//        if (dir % 10 == 5)
+//            setAttackDist(getAttackDist() / 2);
 
         if (this instanceof King)
-            setAttackDist(1);
+            setAttackDist(1,1);
+
+        int[] dist = getAttackDist();
 
         switch (dir) {
             case Dir.STAY:
                 break;
             case Dir.LEFT:
-                yLoc-=getAttackDist();
+                yLoc-=dist[1];
                 break;
             case Dir.UP_LEFT:
-                xLoc-=getAttackDist();
-                yLoc-=getAttackDist();
+                xLoc-=dist[0];
+                yLoc-=dist[1];
                 break;
             case Dir.UP:
-                xLoc-=getAttackDist();
+                xLoc-=dist[0];
                 break;
             case Dir.UP_RIGHT:
-                xLoc-=getAttackDist();
-                yLoc+=getAttackDist();
+                xLoc-=dist[0];
+                yLoc+=dist[1];
                 break;
             case Dir.RIGHT:
-                yLoc+=getAttackDist();
+                yLoc+=dist[1];
                 break;
             case Dir.DOWN_RIGHT:
-                xLoc+=getAttackDist();
-                yLoc+=getAttackDist();
+                xLoc+=dist[0];
+                yLoc+=dist[1];
                 break;
             case Dir.DOWN:
-                xLoc+=getAttackDist();
+                xLoc+=dist[0];
                 break;
             case Dir.DOWN_LEFT:
-                xLoc+=getAttackDist();
-                yLoc-=attackDist;
+                xLoc+=dist[0];
+                yLoc-=dist[1];
                 break;
             default:
-                xLoc-=getAttackDist();
+                xLoc-=dist[0];
 
         }
-        setAttackDist(1);
+        setAttackDist(1,1);
 
     }
 
@@ -146,10 +153,10 @@ public abstract class Entity {
 
                     setAttackDir(getDirectionToward(temp));
 
-                    setAttackDist(getDistance(temp));
+                    setAttackDist(temp);
 
                 }else{
-                    setAttackDist(getDistance(temp));
+                    setAttackDist(temp);
                 }
             }
 
@@ -277,7 +284,15 @@ public abstract class Entity {
         return prevAttackDir;
     }
 
-    public void setAttackDist(int dist) { attackDist = dist; }
+    public void setAttackDist(Entity to) {
+        xDist = Math.abs(xLoc - to.getX());
+        yDist = Math.abs(yLoc - to.getY());
+    }
+
+    public void setAttackDist(int x, int y) {
+        xDist = x;
+        yDist = y;
+    }
 
     public Entity getPrevEnt() {
         return prevEnt;
@@ -303,7 +318,7 @@ public abstract class Entity {
         return attackDir;
     }
 
-    public int getAttackDist() { return attackDist; }
+    public int[] getAttackDist() { return new int[]{xDist, yDist}; }
 
     public char symbols() {
         return 'e';
@@ -314,7 +329,7 @@ public abstract class Entity {
 
     public String getInfo() {
         return String.valueOf(symbol) + " - " + String.valueOf(attackDir)
-                + ", " + String.valueOf(attackDist);
+                + ": " + String.valueOf(xDist) + ", " + String.valueOf(yDist);
     }
 
     public static class Dir {
