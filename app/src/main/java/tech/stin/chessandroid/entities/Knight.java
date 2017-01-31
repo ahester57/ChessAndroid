@@ -38,8 +38,10 @@ public class Knight extends Entity{
     }
 
     @Override
-    public void move(int dir){
-            super.move(dir);
+    public void move(int dir) {
+        super.move(dir);
+
+    }
 //        int[] dist = getAttackDist();
 //
 //        switch (dir) {
@@ -83,7 +85,7 @@ public class Knight extends Entity{
 
 //        }
 
-    }
+
 
     @Override
     public int[][] getPossibleDirections(){

@@ -40,51 +40,6 @@ public class Bishop extends Entity {
         setSymbol(symbols());
     }
 
-//    @Override
-//    public void move(int dir, double distance){
-//
-//        switch (dir) {
-//            case Dir.STAY:
-//                break;
-//            case Dir.LEFT:
-//                xLoc--;
-//                yLoc--;
-//                break;
-//            case Dir.UP_LEFT:
-//                xLoc--;
-//                yLoc--;
-//                break;
-//            case Dir.UP:
-//                xLoc--;
-//                yLoc++;
-//                break;
-//            case Dir.UP_RIGHT:
-//                xLoc--;
-//                yLoc++;
-//                break;
-//            case Dir.RIGHT:
-//                xLoc++;
-//                yLoc++;
-//                break;
-//            case Dir.DOWN_RIGHT:
-//                xLoc++;
-//                yLoc++;
-//                break;
-//            case Dir.DOWN:
-//                xLoc++;
-//                yLoc--;
-//                break;
-//            case Dir.DOWN_LEFT:
-//                xLoc++;
-//                yLoc--;
-//                break;
-//            default:
-//                xLoc++;
-//                yLoc--;
-//
-//        }
-//
-//    }
 
     @Override
     public void move(int dir){

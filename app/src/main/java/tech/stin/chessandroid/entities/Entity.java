@@ -33,62 +33,10 @@ public abstract class Entity {
         xDist = yDist = 1;
     }
 
-
-
-//    //Default movement, any direction, 1 square
-//    public void move(int dir, double asdf) {
-//
-//        switch (dir) {
-//            case Dir.STAY:
-//                break;
-//            case Dir.LEFT:
-//                yLoc--;
-//                break;
-//            case Dir.UP_LEFT:
-//                xLoc--;
-//                yLoc--;
-//                break;
-//            case Dir.UP:
-//                xLoc--;
-//                break;
-//            case Dir.UP_RIGHT:
-//                xLoc--;
-//                yLoc++;
-//                break;
-//            case Dir.RIGHT:
-//                yLoc++;
-//                break;
-//            case Dir.DOWN_RIGHT:
-//                xLoc++;
-//                yLoc++;
-//                break;
-//            case Dir.DOWN:
-//                xLoc++;
-//                break;
-//            case Dir.DOWN_LEFT:
-//                xLoc++;
-//                yLoc--;
-//                break;
-//            default:
-//                xLoc--;
-//
-//        }
-//
-//
-//    }
-
-    public void move(){
-
-
-    }
-
     //@TODO Generalize this
     //Default movement, any direction, for multiple squares
     public void move(int dir) {
         setPrevAttackDir(dir);
-//
-//        if (dir % 10 == 5)
-//            setAttackDist(getAttackDist() / 2);
 
         if (this instanceof King)
             setAttackDist(1,1);
@@ -327,7 +275,7 @@ public abstract class Entity {
         return attackDir;
     }
 
-    public int[] getAttackDist() { return new int[]{xDist, yDist}; }
+    int[] getAttackDist() { return new int[]{xDist, yDist}; }
 
     public char symbols() {
         return 'e';
@@ -343,14 +291,14 @@ public abstract class Entity {
 
     public static class Dir {
         public final static int UP = 90;
-        public final static int RIGHT = 180;
-        public final static int LEFT = 0;
+        final static int RIGHT = 180;
+        final static int LEFT = 0;
         public final static int DOWN = 270;
-        public final static int UP_RIGHT = 135;
-        public final static int UP_LEFT = 45;
-        public final static int DOWN_RIGHT = 225;
-        public final static int DOWN_LEFT = 315;
-        public final static int STAY = -1;
+        final static int UP_RIGHT = 135;
+        final static int UP_LEFT = 45;
+        final static int DOWN_RIGHT = 225;
+        final static int DOWN_LEFT = 315;
+        final static int STAY = -1;
     }
 
 }

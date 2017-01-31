@@ -192,8 +192,6 @@ class World {
             if (count > 2000) {
                 over = true;
                 endOnKing = true;
-
-                return;
             }
 
         }
@@ -219,13 +217,8 @@ class World {
 
         Entity oldPrev = e.getPrevEnt();
         int oldX = e.getX(), oldY = e.getY();
-//
 
         e.move(direction);
-//        if (distance == 1)
-//            e.move(direction);
-//        else
-//            e.move(direction, distance);
 
         //This section uses recursion and move checking
         // to make sure the team got a turn.
