@@ -2,6 +2,7 @@ package tech.stin.chessandroid.entities;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Austin on 3/23/2016.
@@ -129,7 +130,7 @@ public abstract class Entity {
                 xLoc-=dist[0];
 
         }
-        setAttackDist(1,1);
+
 
     }
 
@@ -162,6 +163,14 @@ public abstract class Entity {
 
         }
 
+        if(!flag) {
+
+            Random rand = new Random();
+            int[][] dirs = getPossibleDirections();
+            int[] choice = dirs[rand.nextInt(dirs.length)];
+            setAttackDist(choice[0], choice[1]);
+
+        }
         return flag;
     }
 
@@ -284,7 +293,7 @@ public abstract class Entity {
         return prevAttackDir;
     }
 
-    public void setAttackDist(Entity to) {
+    private void setAttackDist(Entity to) {
         xDist = Math.abs(xLoc - to.getX());
         yDist = Math.abs(yLoc - to.getY());
     }

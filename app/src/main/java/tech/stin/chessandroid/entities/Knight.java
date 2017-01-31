@@ -39,48 +39,49 @@ public class Knight extends Entity{
 
     @Override
     public void move(int dir){
+            super.move(dir);
+//        int[] dist = getAttackDist();
+//
+//        switch (dir) {
+//            case Dir.STAY:
+//                break;
+//            case Dir.LEFT:
+//                xLoc--;
+//                yLoc-=2;
+//                break;
+//            case Dir.UP_LEFT:
+//                xLoc-=2;
+//                yLoc--;
+//                break;
+//            case Dir.UP:
+//                xLoc-=2;
+//                yLoc++;
+//                break;
+//            case Dir.UP_RIGHT:
+//                xLoc--;
+//                yLoc+=2;
+//                break;
+//            case Dir.RIGHT:
+//                xLoc++;
+//                yLoc+=2;
+//                break;
+//            case Dir.DOWN_RIGHT:
+//                xLoc+=2;
+//                yLoc++;
+//                break;
+//            case Dir.DOWN:
+//                xLoc+=2;
+//                yLoc--;
+//                break;
+//            case Dir.DOWN_LEFT:
+//                xLoc++;
+//                yLoc-=2;
+//                break;
+//            default:
+//                xLoc++;
+//                yLoc-=2;
 
-
-        switch (dir) {
-            case Dir.STAY:
-                break;
-            case Dir.LEFT:
-                xLoc--;
-                yLoc-=2;
-                break;
-            case Dir.UP_LEFT:
-                xLoc-=2;
-                yLoc--;
-                break;
-            case Dir.UP:
-                xLoc-=2;
-                yLoc++;
-                break;
-            case Dir.UP_RIGHT:
-                xLoc--;
-                yLoc+=2;
-                break;
-            case Dir.RIGHT:
-                xLoc++;
-                yLoc+=2;
-                break;
-            case Dir.DOWN_RIGHT:
-                xLoc+=2;
-                yLoc++;
-                break;
-            case Dir.DOWN:
-                xLoc+=2;
-                yLoc--;
-                break;
-            case Dir.DOWN_LEFT:
-                xLoc++;
-                yLoc-=2;
-                break;
-            default:
-                xLoc++;
-                yLoc-=2;
-
-        }
+//        }
 
     }
 

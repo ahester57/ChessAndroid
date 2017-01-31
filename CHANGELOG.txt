@@ -31,3 +31,8 @@ Austin Hester - UMSL CS
 - split up distance calculation into xDist & yDist!
 @TODO
 	- fix knight missing sometimes
+
+01/31/17
+--------
+- changed knight and rook move to super.move()
+- set random dir in canAttack if cannot attack

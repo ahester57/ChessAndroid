@@ -157,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                     if (!endOnKing){
                         nextTurn.setEnabled(true);
                         autoAdvance.setEnabled(true);
+                        stopTime = false;
                     } else if(world.isOver()){
                         nextTurn.setEnabled(false);
                         autoAdvance.setEnabled(false);

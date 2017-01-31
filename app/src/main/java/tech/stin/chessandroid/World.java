@@ -88,29 +88,39 @@ class World {
                             }
                         }
                     } else {
-
+//                        if (!(e instanceof Pawn)) {
+//                            if (aggressive) {
+//                                e.setAttackDir(e.getDirectionToward(target.get(team)));
+//                                //e.setAttackDist()
+//                            } else {
+//                                e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
+//
+//                                //direction = (int) (rand.nextDouble() * 8) * 45;
+//                            }
+//                        }
 
                     }
 
 
                 }
+
+                // @TODO fix it not workng
+                // @TODO fix getting stuck, add *random* move when stuck
+
+                //pick best attacker
+                int best = rand.nextInt(attackers.size()); // = chooseBestMove();
+
+                move(attackers.get(best), attackers.get(best).getAttackDir());
             }
-
-            // @TODO fix it not workng
-            // @TODO fix getting stuck, add *random* move when stuck
-
-            //pick best attacker
-            int best = rand.nextInt(attackers.size()); // = chooseBestMove();
 
 
 //            if (attackers.size() > 1)
 //                best = rand.nextDouble() > 0.5 ? 0 : 1; // = chooseBestMove();
 
-            move(attackers.get(best), attackers.get(best).getAttackDir());
 
             //move(attackers.get(best), direction, distance);
         }
-        //Debug.stopMethodTracing();
+
     }
 
 
@@ -129,34 +139,54 @@ class World {
             //why do pawns have to be such asses
             //picks a random player from the current team if no attacker available
 
-            for (Entity e : attackers){
-                if (e instanceof OpenSpace) {
-                    e = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
-                    attackers.set(0, e);
+            if (attackers.size() == 0) {
+                Entity en = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
+                en.setAttackDir(en.getDirectionToward(target.get(team)));
+                en.setAttackDist(1, 1);
+                move(en, en.getAttackDir());
+            } else {
+                for (Entity e : attackers) {
+                    if (e instanceof OpenSpace) {
+                        e = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
+                        attackers.set(0, e);
 
-                    for (int i = 0; i < teams.get(team).size(); i++)
-                        attackers.add(teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size())));
+                        for (int i = 0; i < teams.get(team).size(); i++)
+                            attackers.add(teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size())));
 
-                    if (!(e instanceof Pawn)) {
-                        if (aggressive) {
-                            e.setAttackDir(e.getDirectionToward(target.get(team)));
-                            //e.setAttackDist()
-                        }else {
-                            e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
+                        if (!(e instanceof Pawn)) {
+                            if (aggressive) {
+                                e.setAttackDir(e.getDirectionToward(target.get(team)));
+                                //e.setAttackDist()
+                            } else {
+                                e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
 
-                            //direction = (int) (rand.nextDouble() * 8) * 45;
+                                //direction = (int) (rand.nextDouble() * 8) * 45;
+                            }
                         }
+                    } else {
+//                        if (!(e instanceof Pawn)) {
+//                            if (aggressive) {
+//                                e.setAttackDir(e.getDirectionToward(target.get(team)));
+//                                //e.setAttackDist()
+//                            } else {
+//                                e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
+//
+//                                //direction = (int) (rand.nextDouble() * 8) * 45;
+//                            }
+//                        }
                     }
-                } else {
+
 
                 }
 
+                //pick best attacker
+                int best = rand.nextInt(attackers.size()); // = chooseBestMove();
 
+
+                move(attackers.get(best), attackers.get(best).getAttackDir());
             }
 
 
-            //pick best attacker
-            int best = rand.nextInt(attackers.size()); // = chooseBestMove();
             count++;
 
             if (count > 2000) {
@@ -166,8 +196,6 @@ class World {
                 return;
             }
 
-
-            move(attackers.get(best), attackers.get(best).getAttackDir());
         }
 
     }
@@ -239,7 +267,7 @@ class World {
                 } else {
                     //to an invalid location
                     put(e, oldX, oldY);
-                    run(e);
+                    run(e); // add only avoid recent move
                 }
             } catch (IndexOutOfBoundsException iobe) {
                 //trying to move to an invalid location

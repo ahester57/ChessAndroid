@@ -40,41 +40,42 @@ public class Rook extends Entity{
 
     @Override
     public void move(int dir){
-        setPrevAttackDir(dir);
-
-        int[] dist = getAttackDist();
-
-        switch (dir) {
-            case Dir.STAY:
-                break;
-            case Dir.LEFT:
-                yLoc-=dist[1];
-                break;
-            case Dir.UP_LEFT:
-                yLoc-=dist[1];
-                break;
-            case Dir.UP:
-                xLoc-=dist[0];
-                break;
-            case Dir.UP_RIGHT:
-                xLoc-=dist[0];
-                break;
-            case Dir.RIGHT:
-                yLoc+=dist[1];
-                break;
-            case Dir.DOWN_RIGHT:
-                yLoc+=dist[1];
-                break;
-            case Dir.DOWN:
-                xLoc+=dist[0];
-                break;
-            case Dir.DOWN_LEFT:
-                xLoc+=dist[0];
-                break;
-            default:
-                xLoc-=dist[0];
-
-        }
+        super.move(dir);
+//        setPrevAttackDir(dir);
+//
+//        int[] dist = getAttackDist();
+//
+//        switch (dir) {
+//            case Dir.STAY:
+//                break;
+//            case Dir.LEFT:
+//                yLoc-=dist[1];
+//                break;
+//            case Dir.UP_LEFT:
+//                yLoc-=dist[1];
+//                break;
+//            case Dir.UP:
+//                xLoc-=dist[0];
+//                break;
+//            case Dir.UP_RIGHT:
+//                xLoc-=dist[0];
+//                break;
+//            case Dir.RIGHT:
+//                yLoc+=dist[1];
+//                break;
+//            case Dir.DOWN_RIGHT:
+//                yLoc+=dist[1];
+//                break;
+//            case Dir.DOWN:
+//                xLoc+=dist[0];
+//                break;
+//            case Dir.DOWN_LEFT:
+//                xLoc+=dist[0];
+//                break;
+//            default:
+//                xLoc-=dist[0];
+//
+//        }
 
     }
 
