@@ -88,12 +88,13 @@ class World {
                             }
                         }
                     }
-                    int best = rand.nextInt(attackers.size()); // = chooseBestMove();
 
-                    move(attackers.get(best));
 
                 }
 
+                int best = rand.nextInt(attackers.size()); // = chooseBestMove();
+
+                move(attackers.get(best));
                 // @TODO fix it not workng
                 // @TODO fix getting stuck, add *random* move when stuck
 

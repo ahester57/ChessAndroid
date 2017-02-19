@@ -42,6 +42,8 @@ public class Knight extends Entity{
         super.move(dir);
 
     }
+
+
 //        int[] dist = getAttackDist();
 //
 //        switch (dir) {

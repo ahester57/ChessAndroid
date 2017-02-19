@@ -108,8 +108,9 @@ public class Pawn extends Entity{
 
                         if (tempDir != Dir.UP && tempDir != Dir.DOWN) {
                             flag = true;
-                            //make this better steal from clowns
+//                            //make this better steal from clowns
                             setAttackDir(getDirectionToward(temp));
+                            setAttackDist(temp);
                         }
 
                     }
