@@ -101,12 +101,6 @@ class World {
 
             }
 
-
-//            if (attackers.size() > 1)
-//                best = rand.nextDouble() > 0.5 ? 0 : 1; // = chooseBestMove();
-
-
-            //move(attackers.get(best), direction, distance);
         }
 
     }

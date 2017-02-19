@@ -106,10 +106,7 @@ public abstract class Entity {
 
                 }else{
                     setAttackDist(temp);
-//                    Random rand = new Random();
-//                    int[][] dirs = getPossibleDirections();
-//                    int[] choice = dirs[rand.nextInt(dirs.length)];
-//                    setAttackDist(choice[0], choice[1]);
+
                 }
             }
 
@@ -205,12 +202,12 @@ public abstract class Entity {
         return direction;
     }
 
-    private int getDistance(Entity toward){
-        // Taxicab!
-        return (Math.abs(xLoc - toward.getX()) + Math.abs(yLoc - toward.getY()));
-        //return (int) Math.sqrt(Math.pow( ((double) xLoc - (double) toward.getX()) , 2)
-                               // + Math.pow( ((double) yLoc - (double) toward.getY()) , 2));
-    }
+//    private int getDistance(Entity toward){
+//        // Taxicab!
+//        return (Math.abs(xLoc - toward.getX()) + Math.abs(yLoc - toward.getY()));
+//        //return (int) Math.sqrt(Math.pow( ((double) xLoc - (double) toward.getX()) , 2)
+//                               // + Math.pow( ((double) yLoc - (double) toward.getY()) , 2));
+//    }
 
 
     public void setPrevEnt(Entity e) {

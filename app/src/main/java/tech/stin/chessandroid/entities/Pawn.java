@@ -83,6 +83,7 @@ public class Pawn extends Entity{
 
 
     //they attack backwards!~ no they dont
+    @Override
     public boolean canAttack(ArrayList<Entity> grid){
         if(!isQueen) {
             boolean flag = false;
@@ -94,6 +95,8 @@ public class Pawn extends Entity{
                 setAttackDir(Dir.DOWN);
             }
 
+
+
             for (int i = 0; i < grid.size(); i++) {
 
                 temp = grid.get(i);
@@ -101,11 +104,13 @@ public class Pawn extends Entity{
 
                     if (temp.getTeam() != this.getTeam()) {
 
-                        flag = true;
+                        int tempDir = getDirectionToward(temp);
 
-                        //make this better steal from clowns
-
-                        setAttackDir(getDirectionToward(temp));
+                        if (tempDir != Dir.UP && tempDir != Dir.DOWN) {
+                            flag = true;
+                            //make this better steal from clowns
+                            setAttackDir(getDirectionToward(temp));
+                        }
 
                     }
                 }
