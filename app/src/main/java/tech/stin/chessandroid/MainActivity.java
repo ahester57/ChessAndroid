@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                         first = false;
                         stopTime = false;
                         timer = new Timer();
-                        timer.schedule(task, 500, 1000);
+                        timer.schedule(task, 200, 300);
                     }
                     if(autoPlay)
                         nextTurn.setEnabled(false);
@@ -243,6 +243,9 @@ public class MainActivity extends AppCompatActivity {
         //The players need to know the dimensions
         //of the board in order to place themselves
         //correctly.
+        for(int i = 0; i < 8; i++) {
+            world.addPlayer(new Pawn(dimensions, 0));
+        }
         world.addPlayer(new King(dimensions, 0));
         world.addPlayer(new Queen(dimensions, 0));
 
@@ -252,9 +255,7 @@ public class MainActivity extends AppCompatActivity {
         world.addPlayer(new Knight(dimensions, 0));
         world.addPlayer(new Rook(dimensions, 0));
         world.addPlayer(new Rook(dimensions, 0));
-        for(int i = 0; i < 8; i++) {
-            world.addPlayer(new Pawn(dimensions, 0));
-        }
+
 
         world.addPlayer(new King(dimensions, 1));
         world.addPlayer(new Queen(dimensions, 1));

@@ -2,6 +2,8 @@ package tech.stin.chessandroid.entities;
 
 import java.util.ArrayList;
 
+import tech.stin.chessandroid.World;
+
 /**
  * Created by Austin on 3/27/2016.
  *
@@ -89,6 +91,18 @@ public class Pawn extends Entity{
             boolean flag = false;
             Entity temp;
 
+
+//
+//            ArrayList<Entity> closeEntities = new ArrayList<>();
+//            Entity target;
+//            for(int[] coords : this.getPossibleDirections()){
+//                target = World.getEntity(coords[0], coords[1]);
+//                if(target != null)
+//                    closeEntities.add(target);
+//            }
+//
+//            grid = (ArrayList<Entity>) closeEntities.clone();
+
             if (getTeam() == 0) {
                 setAttackDir(Dir.UP);
             } else if (getTeam() == 1) {
@@ -146,6 +160,8 @@ public class Pawn extends Entity{
             return super.getPossibleDirections();
         }
     }
+
+
 
     public void makeQueen(){
         isQueen = true;

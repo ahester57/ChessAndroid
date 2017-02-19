@@ -11,7 +11,7 @@ import java.util.Random;
 class World {
 
 
-    private ArrayList<ArrayList<Entity>> entities;
+    private  ArrayList<ArrayList<Entity>> entities;
     private ArrayList<ArrayList<Entity>> teams;
     private ArrayList<Entity> target;
 
