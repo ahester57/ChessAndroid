@@ -67,7 +67,7 @@ class World {
                 Entity en = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
                 en.setAttackDir(en.getDirectionToward(target.get(team)));
                 en.setAttackDist(1, 1);
-                move(en, en.getAttackDir());
+                move(en);
             } else {
                 for (Entity e : attackers) {
                     if (e instanceof OpenSpace) {
@@ -87,20 +87,10 @@ class World {
                                 //direction = (int) (rand.nextDouble() * 8) * 45;
                             }
                         }
-                    } else {
-//                        if (!(e instanceof Pawn)) {
-//                            if (aggressive) {
-//                                e.setAttackDir(e.getDirectionToward(target.get(team)));
-//                                //e.setAttackDist()
-//                            } else {
-//                                e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
-//
-//                                //direction = (int) (rand.nextDouble() * 8) * 45;
-//                            }
-//                        }
-
                     }
+                    int best = rand.nextInt(attackers.size()); // = chooseBestMove();
 
+                    move(attackers.get(best));
 
                 }
 
@@ -108,9 +98,7 @@ class World {
                 // @TODO fix getting stuck, add *random* move when stuck
 
                 //pick best attacker
-                int best = rand.nextInt(attackers.size()); // = chooseBestMove();
 
-                move(attackers.get(best), attackers.get(best).getAttackDir());
             }
 
 
@@ -143,7 +131,7 @@ class World {
                 Entity en = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
                 en.setAttackDir(en.getDirectionToward(target.get(team)));
                 en.setAttackDist(1, 1);
-                move(en, en.getAttackDir());
+                move(en);
             } else {
                 for (Entity e : attackers) {
                     if (e instanceof OpenSpace) {
@@ -163,17 +151,6 @@ class World {
                                 //direction = (int) (rand.nextDouble() * 8) * 45;
                             }
                         }
-                    } else {
-//                        if (!(e instanceof Pawn)) {
-//                            if (aggressive) {
-//                                e.setAttackDir(e.getDirectionToward(target.get(team)));
-//                                //e.setAttackDist()
-//                            } else {
-//                                e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
-//
-//                                //direction = (int) (rand.nextDouble() * 8) * 45;
-//                            }
-//                        }
                     }
 
 
@@ -183,7 +160,7 @@ class World {
                 int best = rand.nextInt(attackers.size()); // = chooseBestMove();
 
 
-                move(attackers.get(best), attackers.get(best).getAttackDir());
+                move(attackers.get(best));
             }
 
 
@@ -213,12 +190,12 @@ class World {
 
     /************Move Stuff*************/
 
-    private void move(Entity e, int direction){
+    private void move(Entity e){
 
         Entity oldPrev = e.getPrevEnt();
         int oldX = e.getX(), oldY = e.getY();
 
-        e.move(direction);
+        e.move(e.getAttackDir());
 
         //This section uses recursion and move checking
         // to make sure the team got a turn.
@@ -360,7 +337,6 @@ class World {
 
             if(source.canAttack(closeEntities)){
                 attackers.add(source);
-
             }
 
         }

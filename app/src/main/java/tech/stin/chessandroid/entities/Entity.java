@@ -23,7 +23,6 @@ public abstract class Entity {
     private int xDist, yDist;
 
 
-
     Entity() {
         symbol = 'e';
     }
@@ -31,6 +30,7 @@ public abstract class Entity {
     Entity(char s) {
         symbol = s;
         xDist = yDist = 1;
+
     }
 
     //@TODO Generalize this
@@ -106,19 +106,23 @@ public abstract class Entity {
 
                 }else{
                     setAttackDist(temp);
+//                    Random rand = new Random();
+//                    int[][] dirs = getPossibleDirections();
+//                    int[] choice = dirs[rand.nextInt(dirs.length)];
+//                    setAttackDist(choice[0], choice[1]);
                 }
             }
 
         }
 
-        if(!flag) {
-
-            Random rand = new Random();
-            int[][] dirs = getPossibleDirections();
-            int[] choice = dirs[rand.nextInt(dirs.length)];
-            setAttackDist(choice[0], choice[1]);
-
-        }
+//        if(!flag) {
+//
+//            Random rand = new Random();
+//            int[][] dirs = getPossibleDirections();
+//            int[] choice = dirs[rand.nextInt(dirs.length)];
+//            setAttackDist(choice[0], choice[1]);
+//
+//        }
         return flag;
     }
 
@@ -241,7 +245,7 @@ public abstract class Entity {
         return prevAttackDir;
     }
 
-    private void setAttackDist(Entity to) {
+    public void setAttackDist(Entity to) {
         xDist = Math.abs(xLoc - to.getX());
         yDist = Math.abs(yLoc - to.getY());
     }
