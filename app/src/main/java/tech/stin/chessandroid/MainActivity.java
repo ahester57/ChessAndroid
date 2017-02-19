@@ -1,13 +1,11 @@
 package tech.stin.chessandroid;
 
-import tech.stin.chessandroid.entities.*;
-
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
@@ -27,6 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import tech.stin.chessandroid.entities.Bishop;
+import tech.stin.chessandroid.entities.King;
+import tech.stin.chessandroid.entities.Knight;
+import tech.stin.chessandroid.entities.Pawn;
+import tech.stin.chessandroid.entities.Queen;
+import tech.stin.chessandroid.entities.Rook;
 
 public class MainActivity extends AppCompatActivity {
 

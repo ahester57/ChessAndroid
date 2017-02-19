@@ -1,9 +1,8 @@
 package tech.stin.chessandroid.entities;
 
-import java.util.ArrayList;
-
 /**
  * Created by Austin on 3/27/2016.
+ *
  */
 public class Rook extends Entity{
 

@@ -1,17 +1,19 @@
 package tech.stin.chessandroid;
 
-import android.os.Debug;
-
-import tech.stin.chessandroid.entities.*;
-
 import java.util.ArrayList;
 import java.util.Random;
+
+import tech.stin.chessandroid.entities.Border;
+import tech.stin.chessandroid.entities.Entity;
+import tech.stin.chessandroid.entities.King;
+import tech.stin.chessandroid.entities.OpenSpace;
+import tech.stin.chessandroid.entities.Pawn;
 
 
 class World {
 
 
-    private  ArrayList<ArrayList<Entity>> entities;
+    private ArrayList<ArrayList<Entity>> entities;
     private ArrayList<ArrayList<Entity>> teams;
     private ArrayList<Entity> target;
 

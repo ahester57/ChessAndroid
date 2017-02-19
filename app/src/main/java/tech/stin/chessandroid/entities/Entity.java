@@ -2,7 +2,6 @@ package tech.stin.chessandroid.entities;
 
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by Austin on 3/23/2016.
