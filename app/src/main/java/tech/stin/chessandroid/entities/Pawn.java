@@ -2,7 +2,6 @@ package tech.stin.chessandroid.entities;
 
 import java.util.ArrayList;
 
-import tech.stin.chessandroid.World;
 
 /**
  * Created by Austin on 3/27/2016.
