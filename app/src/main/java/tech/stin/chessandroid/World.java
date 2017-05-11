@@ -9,6 +9,7 @@ import tech.stin.chessandroid.entities.King;
 import tech.stin.chessandroid.entities.Knight;
 import tech.stin.chessandroid.entities.OpenSpace;
 import tech.stin.chessandroid.entities.Pawn;
+import tech.stin.chessandroid.entities.Rook;
 
 
 class World {
@@ -146,7 +147,7 @@ class World {
                 //pick best attacker
                 int best = rand.nextInt(attackers.size()); // = chooseBestMove();
                 for (int i = 0; i < 3; i++) {
-                    if (attackers.get(best) instanceof Pawn || attackers.get(best) instanceof Knight) {
+                    if (attackers.get(best) instanceof Pawn || attackers.get(best) instanceof  Knight|| attackers.get(best) instanceof Rook) {
                         attackers.add(teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size())));
                         best = rand.nextInt(attackers.size());
                     }
