@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                         first = false;
                         stopTime = false;
                         timer = new Timer();
-                        timer.schedule(task, 200, 300);
+                        timer.schedule(task, 500, 500);
                     }
                     if(autoPlay)
                         nextTurn.setEnabled(false);

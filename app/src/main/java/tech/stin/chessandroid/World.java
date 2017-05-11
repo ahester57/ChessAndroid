@@ -6,6 +6,7 @@ import java.util.Random;
 import tech.stin.chessandroid.entities.Border;
 import tech.stin.chessandroid.entities.Entity;
 import tech.stin.chessandroid.entities.King;
+import tech.stin.chessandroid.entities.Knight;
 import tech.stin.chessandroid.entities.OpenSpace;
 import tech.stin.chessandroid.entities.Pawn;
 
@@ -95,7 +96,9 @@ class World {
                 }
 
                 int best = rand.nextInt(attackers.size()); // = chooseBestMove();
-
+                if (attackers.get(best) instanceof Pawn || attackers.get(best) instanceof Knight) {
+                    best = rand.nextInt(attackers.size());
+                }
                 move(attackers.get(best));
                 // @TODO fix it not workng
                 // @TODO fix getting stuck, add *random* move when stuck
@@ -155,7 +158,12 @@ class World {
 
                 //pick best attacker
                 int best = rand.nextInt(attackers.size()); // = chooseBestMove();
-
+                for (int i = 0; i < 3; i++) {
+                    if (attackers.get(best) instanceof Pawn || attackers.get(best) instanceof Knight) {
+                        attackers.add(teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size())));
+                        best = rand.nextInt(attackers.size());
+                    }
+                }
 
                 move(attackers.get(best));
             }
@@ -163,7 +171,7 @@ class World {
 
             count++;
 
-            if (count > 2000) {
+            if (count > 1250) {
                 over = true;
                 endOnKing = true;
             }
