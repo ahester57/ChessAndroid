@@ -49,16 +49,14 @@ class World {
 
     void run(){
         //Debug.startMethodTracing("run");
-        if(teams.get(0).isEmpty() || teams.get(1).isEmpty()) {
+        if (teams.get(0).isEmpty() || teams.get(1).isEmpty()) {
             over = true;
             return;
         }
 
-        if(!over || !endOnKing) {
+        if (!over || !endOnKing) {
             int team = cycles % 2;
             count = 0;
-
-
             ArrayList<Entity> attackers = chooseAttacker(team);
 
             //why do pawns have to be such asses
@@ -86,47 +84,37 @@ class World {
                                 //e.setAttackDist()
                             } else {
                                 e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
-
                                 //direction = (int) (rand.nextDouble() * 8) * 45;
                             }
                         }
                     }
-
-
                 }
-
+                // layer of randomness
                 int best = rand.nextInt(attackers.size()); // = chooseBestMove();
                 if (attackers.get(best) instanceof Pawn || attackers.get(best) instanceof Knight) {
                     best = rand.nextInt(attackers.size());
                 }
                 move(attackers.get(best));
-                // @TODO fix it not workng
                 // @TODO fix getting stuck, add *random* move when stuck
-
                 //pick best attacker
-
             }
-
         }
-
     }
 
 
     // When chosen attacker's move is invalid, try again, skipping previously choosen
     private void run(Entity avoid){
-        if(teams.get(0).isEmpty() || teams.get(1).isEmpty()) {
+        if (teams.get(0).isEmpty() || teams.get(1).isEmpty()) {
             over = true;
             return;
         }
 
-        if(!over || !endOnKing) {
+        if (!over || !endOnKing) {
             int team = cycles % 2;
-
             ArrayList<Entity> attackers = chooseAttacker(team, avoid);
 
-            //why do pawns have to be such asses
-            //picks a random player from the current team if no attacker available
-
+            // why do pawns have to be such asses
+            // picks a random player from the current team if no attacker available
             if (attackers.size() == 0) {
                 Entity en = teams.get(team).get((int) (rand.nextDouble() * teams.get(team).size()));
                 en.setAttackDir(en.getDirectionToward(target.get(team)));
@@ -147,7 +135,6 @@ class World {
                                 //e.setAttackDist()
                             } else {
                                 e.setAttackDir((int) (rand.nextDouble() * 8) * 45);
-
                                 //direction = (int) (rand.nextDouble() * 8) * 45;
                             }
                         }
@@ -155,7 +142,7 @@ class World {
 
 
                 }
-
+                // layers of randomness
                 //pick best attacker
                 int best = rand.nextInt(attackers.size()); // = chooseBestMove();
                 for (int i = 0; i < 3; i++) {
@@ -164,18 +151,16 @@ class World {
                         best = rand.nextInt(attackers.size());
                     }
                 }
-
                 move(attackers.get(best));
             }
 
-
+            // if you've tried this many combinations and can't find a move,...
+            // just give up at this point srsly
             count++;
-
             if (count > 1250) {
                 over = true;
                 endOnKing = true;
             }
-
         }
 
     }
@@ -196,12 +181,10 @@ class World {
     /************Move Stuff*************/
 
     private void move(Entity e){
-
         Entity oldPrev = e.getPrevEnt();
         int oldX = e.getX(), oldY = e.getY();
 
         e.move(e.getAttackDir());
-
         //This section uses recursion and move checking
         // to make sure the team got a turn.
         try {
@@ -248,7 +231,7 @@ class World {
                 //trying to move to an invalid location
                 over = true;
             }
-        }catch (StackOverflowError soe){
+        } catch (StackOverflowError soe){
             //can't find anybody
             over = true;
         }
@@ -259,17 +242,16 @@ class World {
         e.setSymbol(e.symbols());
 
         insert(oldPrev, oldX, oldY);
-
         cycles++;
     }
 
     private void insert(Entity e){
         int x = e.getX(), y = e.getY();
 
-        if(e instanceof Pawn){
-            if(e.getTeam() == 0 && e.getX() == 1){
+        if (e instanceof Pawn){
+            if (e.getTeam() == 0 && e.getX() == 1){
                 ((Pawn) e).makeQueen();
-            }else if(e.getTeam() == 1 && e.getX() == 8){
+            } else if(e.getTeam() == 1 && e.getX() == 8){
                 ((Pawn) e).makeQueen();
             }
         }
@@ -285,10 +267,10 @@ class World {
         e.setxLoc(x);
         e.setyLoc(y);
 
-        if(e instanceof Pawn){
-            if(e.getTeam() == 0 && e.getX() == 1){
+        if (e instanceof Pawn){
+            if (e.getTeam() == 0 && e.getX() == 1){
                 ((Pawn) e).makeQueen();
-            }else if(e.getTeam() == 1 && e.getX() == 8){
+            } else if(e.getTeam() == 1 && e.getX() == 8){
                 ((Pawn) e).makeQueen();
             }
         }
@@ -316,40 +298,33 @@ class World {
         ArrayList<Entity> attackers = new ArrayList<>();
 
         Entity source, target;
-
         ArrayList<Entity> closeEntities;
 
-        for(int i = 0; i < teams.get(team).size(); i++){
+        for (int i = 0; i < teams.get(team).size(); i++){
 
             source = teams.get(team).get(i);
-
-
             // Change closeEntities to potential targets
             // Consider giving row / column owned
             // Do up / down first, then diagonal
 
             closeEntities = new ArrayList<>();
 
-            for(int[] coords : source.getPossibleDirections()){
+            for (int[] coords : source.getPossibleDirections()){
                 target = getEntity(coords[0], coords[1]);
-                if(target != null)
+                if (target != null)
                     closeEntities.add(target);
             }
 
-
             // Instead of returning right away, make list then choose best option
-
 
             if(source.canAttack(closeEntities)){
                 attackers.add(source);
             }
-
         }
 
-        if(attackers.isEmpty())
+        if (attackers.isEmpty()) {
             attackers.add(new OpenSpace(' '));
-
-
+        }
         return attackers;
     }
 
@@ -357,7 +332,6 @@ class World {
         ArrayList<Entity> attackers = new ArrayList<>();
 
         Entity source, target;
-
         ArrayList<Entity> closeEntities;
 
         for(int i = 0; i < teams.get(team).size(); i++){
@@ -366,23 +340,21 @@ class World {
 
             closeEntities = new ArrayList<>();
 
-            for(int[] coords : source.getPossibleDirections()){
+            for (int[] coords : source.getPossibleDirections()){
                 target = getEntity(coords[0], coords[1]);
-                if(target != null)
+                if (target != null)
                     closeEntities.add(target);
             }
 
-            if(source.canAttack(closeEntities)){
-                if(source.getX() == avoid.getX() && source.getY() == avoid.getY()){
+            if (source.canAttack(closeEntities)){
+                if (source.getX() == avoid.getX() && source.getY() == avoid.getY()){
                     continue;
                 }
                 attackers.add(source);
-
             }
-
         }
 
-        if(attackers.isEmpty())
+        if (attackers.isEmpty())
             attackers.add(new OpenSpace(' '));
 
         return attackers;
@@ -395,11 +367,11 @@ class World {
 
         teams.get(e.getTeam()).add(e);
 
-        if(e instanceof King){
-            if(e.getTeam() == 0){
+        if (e instanceof King){
+            if (e.getTeam() == 0){
 
                 target.set(1, e);
-            }else{
+            } else{
                 target.set(0, e);
             }
         }
@@ -415,21 +387,19 @@ class World {
     //Kills an entity
     private void kill(Entity prey) {
 
-        if(prey instanceof King){
+        if (prey instanceof King){
             over = true;
         }
-
         //
-        if(prey == target.get(0)){
+        if (prey == target.get(0)){
             target.set(0, teams.get(1).get(0));
-        }else if(prey == target.get(1)){
+        } else if(prey == target.get(1)){
             target.set(1, teams.get(0).get(0));
         }
 
-
         teams.get(prey.getTeam()).remove(prey);
 
-        if(teams.get(0).isEmpty() || teams.get(1).isEmpty())
+        if (teams.get(0).isEmpty() || teams.get(1).isEmpty())
             over = true;
 
         entities.get(prey.getX()).remove(prey.getY());
@@ -447,12 +417,11 @@ class World {
 
         int maxRow = rows-1, maxCol = cols-1;
 
-        for(int x = 0; x < rows; x++){
+        for (int x = 0; x < rows; x++){
 
             entities.add(new ArrayList<Entity>());
 
             for(int y = 0; y < cols; y++){
-
                 if(x == 0) {
                     //top border
                     if(y == 0) {
@@ -461,9 +430,7 @@ class World {
                         entities.get(x).add(new Border('#'));
                     }else{
                         entities.get(x).add(new Border('"'));
-
                     }
-
                 }else if(x == maxRow) {
                     //bottom border
                     if(y == 0) {
@@ -473,7 +440,6 @@ class World {
                     }else{
                         entities.get(x).add(new Border('('));
                     }
-
                 }else {
                     if(y == 0) {
                         //Numbered borders on left
@@ -505,12 +471,10 @@ class World {
                             default:
                                 entities.get(x).add(new Border('$'));
                         }
-
-                    }else if(y == maxCol) {
+                    } else if(y == maxCol) {
                         //right border
                         entities.get(x).add(new Border('%'));
-
-                    }else{
+                    } else{
                         //Open space
                         char ch;
                         if ((y + x) % 2 == 0) {
@@ -527,12 +491,12 @@ class World {
     }
 
     Entity getEntity(int r, int c){
-        try{
+        try {
             if (r < 10 && c < 10)
                 return entities.get(r).get(c);
             else
                 return null;
-        }catch (IndexOutOfBoundsException iobe){
+        } catch (IndexOutOfBoundsException iobe) {
             return null;
         }
 
